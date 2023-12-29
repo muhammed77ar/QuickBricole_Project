@@ -1,5 +1,5 @@
 export default function QuickService() {
   return (
-    <div>quickService</div>
+    <h3>quickService</h3>
   )
 }

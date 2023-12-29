@@ -71,7 +71,7 @@ export default function Footer() {
               <ul>
                 {element.links.map((link, key2) => (
                   <li key={key2}>
-                    <Link href={link.href}>{link.icon} {link.name}</Link>
+                    <Link href={link.href} className="callUs"><span>{link.icon}</span>{link.name}</Link>
                   </li>
                 ))}
               </ul>

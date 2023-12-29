@@ -20,7 +20,7 @@ export const Footerr = styled.div`
 
   @media (max-width: ${PhoneBreakPoint}) {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
     height: 800px;
   }
 `;
@@ -36,14 +36,32 @@ export const Section2 = styled.div`
 
   li {
     margin-bottom: 5px;
+    .callUs{
+      display: flex;
+      span{
+        margin-right: 5px;
+        margin-top: 4px;
+      }
+    }
   }
 
   @media (max-width: ${PhoneBreakPoint}) {
     margin: 10px;
     width: 100%;
     text-align: center;
+    li{
+      .callUs{
+        margin-top: 10px;
+        display: block;
+        span{
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
   }
 `;
+
 export const Section1 = styled.div`
   text-align: start;
   margin-left: 20px;
@@ -105,6 +123,7 @@ export const Facebook = styled(FaFacebookF)`
   }
 `;
 export const Icons = styled.div`
+  display: flex;
   .social-icon-link {
     color: inherit;
     text-decoration: none;
