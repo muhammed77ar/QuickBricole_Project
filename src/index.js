@@ -4,15 +4,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';
-import App2 from './quickbricole/application';
+import App2 from './application';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import Homee from './quickbricole/pages/homee';
-import FindProfessional from './quickbricole/pages/findProfessional';
-import FindWork from './quickbricole/pages/findWork';
-import Login from './quickbricole/pages/login';
-import SignUp from './quickbricole/pages/signUp';
-import PostService from './quickbricole/pages/postService';
-import QuickService from './quickbricole/pages/quickService';
+import Homee from './pages/homee';
+import FindProfessional from './pages/findProfessional';
+import FindWork from './pages/findWork';
+import Login from './pages/login';
+import SignUp from './pages/signUp';
+import PostService from './pages/postService';
+import QuickService from './pages/quickService';
 
 const router = createBrowserRouter([
         {
