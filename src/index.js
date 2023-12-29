@@ -10,9 +10,10 @@ import Homee from './pages/homee';
 import FindProfessional from './pages/findProfessional';
 import FindWork from './pages/findWork';
 import Login from './pages/login';
-import SignUp from './pages/signUp';
 import PostService from './pages/postService';
 import QuickService from './pages/quickService';
+import ClientSignUp from './pages/ClientsignUp';
+import BricoleurSignUp from './pages/bricoleurSignUp';
 
 const router = createBrowserRouter([
         {
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
                         {path : "findProfessional", element : <FindProfessional />},
                         {path : "findWork", element : <FindWork />},
                         {path : "login", element : <Login />},
-                        {path : "signUp", element : <SignUp />},
+                        {path : "clientsignUp", element : <ClientSignUp />},
+                        {path : "bricoleursignUp", element : <BricoleurSignUp />},
                         {path : "postService", element : <PostService />},
                         {path : "quickService", element : <QuickService />},
                 ]

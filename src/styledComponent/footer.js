@@ -11,6 +11,7 @@ export const FooterWrapper = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: ${(props) => (props.zIndex ? -1 : 100)};
   @media (max-width: ${PhoneBreakPoint}) {
     width: 100%;
   }

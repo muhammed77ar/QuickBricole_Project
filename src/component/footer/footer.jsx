@@ -2,6 +2,8 @@ import { FooterWrapper, Footerr, Section2, Link, Section1, FooterLogo, Icons, In
 import { IoLocationOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
+import { useContext } from "react";
+import { Context } from "../../application";
 
 const socialMediaLinks = {
     instagram: "https://www.instagram.com/",
@@ -22,7 +24,7 @@ const FooterElements = [
       { name: "Find professional", href: "/findProfessional" },
       { name: "Quick Service", href: "/quickService" },
       { name: "Post Service", href: "/postService" },
-      { name: "Create Account", href: "/signUp" }
+      { name: "Create Account", href: "/clientsignUp" }
     ]
   },
   {
@@ -30,7 +32,7 @@ const FooterElements = [
     title: "For Professionals",
     links: [
       { name: "Find Work", href: "/findWork" },
-      { name: "Create Account", href: "/signUp" }
+      { name: "Create Account", href: "/bricoleursignUp" }
     ]
   },
   {
@@ -45,8 +47,10 @@ const FooterElements = [
 ];
 
 export default function Footer() {
+  const openModel = useContext(Context)
+  console.log(openModel)
   return (
-    <FooterWrapper>
+    <FooterWrapper zIndex={openModel}>
       <Footerr>
         {FooterElements.map((element, key) => (
           key === 0 ? (
