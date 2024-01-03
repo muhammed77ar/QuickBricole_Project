@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                         },
                         {path : "findProfessional", element : <FindProfessional />},
                         {path : "findWork", element : <FindWork />},
-                        {path : "login", element : <Login />},
+                        {path : "login", Component : Login },
                         {path : "clientsignUp", element : <ClientSignUp />},
                         {path : "bricoleursignUp", element : <BricoleurSignUp />},
                         {path : "postService", element : <PostService />},

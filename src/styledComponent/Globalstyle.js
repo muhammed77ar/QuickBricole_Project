@@ -7,7 +7,7 @@ body{
     box-sizing: border-box;
     font-family: "Poppins";
     background-color: #F2FAFA;
-    height: 2000px;
+    min-height: 100vh;
     position: relative;
 }
 `

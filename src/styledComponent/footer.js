@@ -7,7 +7,6 @@ const PhoneBreakPoint = "860px";
 
 export const FooterWrapper = styled.div`
   background-color: white;
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
