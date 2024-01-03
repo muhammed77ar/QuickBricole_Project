@@ -9,7 +9,7 @@ export default function Login(){
    <h1 className=' mx-auto title-color max-w-max title'>Login</h1>
     <div className=' flex   justify-center items-center  '>
 
-    <form className="container mx-auto w-[80%] md:mex-w-[10%] my-1 border border-red-300">
+    <form className="container mx-auto w-[80%] md:max-w-[10%] my-1 ">
         <div className='grid grid-cols-6   h-max  md:px-9  gap-6 items-start'>
           <div className='col-span-6 flex flex-col md:flex-row  md:px-3 mx-auto gap-2'>
             <span className='py-2 border  border-t-2 border-x-2 rounded-md border-blue-300 w-[300px]  flex items-center justify-center'><img src={fbImg}alt='imgfb'/>login with facebook</span>

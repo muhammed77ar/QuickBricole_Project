@@ -1,6 +1,6 @@
 export default function BricoleurSignUp(){
     return (
-        <div className='my-9 min-h-screen border border-red-300  max-w-[100%]  mt-0  overflow-hidden  '>
+        <div className='my-9 min-h-screen max-w-[100%]  mt-0  overflow-hidden  '>
    <h1 className=' mx-auto title-color max-w-max title'>Sign Up</h1>
     <div className=' flex  justify-center items-center '>
 
