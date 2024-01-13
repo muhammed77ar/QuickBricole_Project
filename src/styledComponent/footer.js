@@ -5,13 +5,16 @@ import { FaFacebookF } from "react-icons/fa";
 
 const PhoneBreakPoint = "860px";
 
+
 export const FooterWrapper = styled.div`
   background-color: #F2FAFA;
   position: absolute;
   width: 100%;
-  z-index: -1;
+  
   @media (max-width: ${PhoneBreakPoint}) {
-    width: 100%;
+    body {
+      overflow-x: hidden;
+    }
   }
 `;
 export const Footerr = styled.div`
@@ -19,11 +22,11 @@ export const Footerr = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
-
   @media (max-width: ${PhoneBreakPoint}) {
     flex-direction: column;
     text-align: center;
     height: 800px;
+    width: 100%;
   }
 `;
 export const Section2 = styled.div`
