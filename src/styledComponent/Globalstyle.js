@@ -8,6 +8,7 @@ body{
     font-family: "Poppins";
     background-color: #F2FAFA;
     min-height: 100vh;
+    width: 100%;
     position: relative;
 }
 `
