@@ -14,6 +14,7 @@ import PostService from './pages/postService';
 import QuickService from './pages/quickService';
 import ClientSignUp from './pages/ClientsignUp';
 import BricoleurSignUp from './pages/bricoleurSignUp';
+import Signup from './pages/signup';
 
 const router = createBrowserRouter([
         {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
                         {path : "findProfessional", element : <FindProfessional />},
                         {path : "findWork", element : <FindWork />},
                         {path : "login", element : <Login /> },
+                        {path : "signup", element : <Signup /> },
                         {path : "clientsignUp", element : <ClientSignUp />},
                         {path : "bricoleursignUp", element : <BricoleurSignUp />},
                         {path : "postService", element : <PostService />},

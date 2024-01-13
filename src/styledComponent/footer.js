@@ -6,12 +6,9 @@ import { FaFacebookF } from "react-icons/fa";
 const PhoneBreakPoint = "860px";
 
 export const FooterWrapper = styled.div`
-  background-color: white;
-  bottom: 0;
-  left: 0;
+  background-color: #F2FAFA;
   position: absolute;
   width: 100%;
-  z-index: ${(props) => (props.zIndex ? -1 : 100)};
   @media (max-width: ${PhoneBreakPoint}) {
     width: 100%;
   }
@@ -96,7 +93,8 @@ export const Link = styled.a`
 `;
 
 export const FooterLogo = styled.img`
-  width: 120px;
+  width: 100px;
+  margin-top: 10px;
 `;
 export const Instagram = styled(AiFillInstagram)`
   font-size: 25px;

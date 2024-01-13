@@ -2,8 +2,6 @@ import { FooterWrapper, Footerr, Section2, Link, Section1, FooterLogo, Icons, In
 import { IoLocationOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
-import { useContext } from "react";
-import { Context } from "../../application";
 
 const socialMediaLinks = {
     instagram: "https://www.instagram.com/",
@@ -14,7 +12,7 @@ const socialMediaLinks = {
 const FooterElements = [
   {
     id: "section",
-    logo: "../photos/logo-color.svg",
+    logo: "../photos/logo-no-background.svg",
     text: "The platform where you can search for professionals such as carpenters, mechanics, electricians and other service providers."
   },
   {
@@ -47,10 +45,8 @@ const FooterElements = [
 ];
 
 export default function Footer() {
-  const openModel = useContext(Context)
-  console.log(openModel)
   return (
-    <FooterWrapper zIndex={openModel}>
+    <FooterWrapper>
       <Footerr>
         {FooterElements.map((element, key) => (
           key === 0 ? (
@@ -85,7 +81,7 @@ export default function Footer() {
       </Footerr>
       <CopyRight>
           <p>2023 Quick Bricole. All right reserved</p>
-        </CopyRight>
+      </CopyRight>
     </FooterWrapper>
   );
 }
