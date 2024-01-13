@@ -64,11 +64,29 @@ export const LinkItems = styled.ul`
   .navLinks {
     color: #797979;
     text-decoration: none;
+    font-weight: 500;
     transition: all 0.4s ease;
+    position: relative;
     &:hover {
       color: #1e88e5;
     }
+    &::before{
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: #1e88e5;
+      transition: all 0.5s ease;
+      border-radius: 20px;
+    }
+    &:hover::before{
+      width: 100%;
+    }
+    
   }
+  
   .post{
     background-color: #1e88e5;
     padding: 10px 30px;
@@ -76,6 +94,13 @@ export const LinkItems = styled.ul`
     color: white;
     &:hover{
       color: white;
+    }
+    &::before{
+      content: "";
+      position: absolute;
+    }
+    &:hover::before{
+      width: 0%;
     }
   }
 

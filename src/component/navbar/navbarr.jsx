@@ -31,7 +31,7 @@ export default function Navbarr() {
             <LinkItems active={clicked}>
                 {linkMenu.map((link) => (
                     <li key={link.page}>
-                        <Link onClick={handelClick} className={`navLinks ${link.className}`} to={link.href}>{link.page}</Link>
+                        <Link onClick={handelClick} activeClassName="active"  className={`navLinks ${link.className}`} to={link.href}>{link.page}</Link>
                     </li>
                 ))}
             </LinkItems>
