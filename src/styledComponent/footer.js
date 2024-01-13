@@ -9,10 +9,10 @@ export const FooterWrapper = styled.div`
   background-color: #F2FAFA;
   position: absolute;
   width: 100%;
+  z-index: -1;
   @media (max-width: ${PhoneBreakPoint}) {
     width: 100%;
   }
-
 `;
 export const Footerr = styled.div`
   height: 300px;

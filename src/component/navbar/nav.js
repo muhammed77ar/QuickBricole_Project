@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 const mobileBreakPoint = "860px";
 
-
 export const NavbarItems = styled.div`
   padding:50px 20px;
   background-color: white;
@@ -11,9 +10,13 @@ export const NavbarItems = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: ${(props) => (props.scroll && "0px 4px 6px rgba(0, 0, 0, 0.1)")};
   @media screen and (max-width: ${mobileBreakPoint}) {
-    position: relative;
   }
 `;
 
@@ -88,6 +91,7 @@ export const LinkItems = styled.ul`
     height: 100%; 
     position: fixed; 
     top: 100px;
+    padding-bottom: 100px;
     left: ${(props) => (props.active ? "0" : "-100%")};
     opacity: 1;
     transition: all 0.5s ease;
@@ -101,4 +105,5 @@ export const LinkItems = styled.ul`
         z-index: 1;
       `}
   }
+  
 `;

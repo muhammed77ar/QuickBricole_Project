@@ -9,6 +9,11 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
+  padding-top: 100px;
+  z-index: 1000;
+  @media screen and (max-width: ${mobileBreakPoint}) {
+    height: 100%;
+  }
 `;
 
 export const Title = styled.h1`

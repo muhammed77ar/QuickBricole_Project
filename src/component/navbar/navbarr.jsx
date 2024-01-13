@@ -6,6 +6,10 @@ import { useState } from "react";
 
 export default function Navbarr() {
     const [clicked, setClicked] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
+    window.addEventListener("scroll", () =>{
+        window.scrollY > 35 ? setScrolled(true) : setScrolled(false)
+      })
     const handelClick = () => {
         setClicked(!clicked)
     }
@@ -19,7 +23,7 @@ export default function Navbarr() {
     ];
 
     return <>
-        <NavbarItems>
+        <NavbarItems scroll={scrolled}>
             <LogoImg src="../photos/logo-color.svg" />
             <Menu onClick={handelClick}>
                 {clicked ? <CgClose className="icons" /> : <IoMenu className="icons" />}
