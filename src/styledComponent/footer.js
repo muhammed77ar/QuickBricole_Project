@@ -8,9 +8,7 @@ const PhoneBreakPoint = "860px";
 
 export const FooterWrapper = styled.div`
   background-color: #F2FAFA;
-  position: absolute;
-  width: 100%;
-  
+   width: 100%;
   @media (max-width: ${PhoneBreakPoint}) {
     body {
       overflow-x: hidden;
@@ -26,7 +24,7 @@ export const Footerr = styled.div`
     flex-direction: column;
     text-align: center;
     height: 800px;
-    width: 100%;
+    max-width: 100%;
   }
 `;
 export const Section2 = styled.div`
