@@ -12,7 +12,7 @@ const style = {
 
 export default function ClientsignUp() {
   return (
-    <form action="#" >
+    <form action="#" method="POST" >
 
    
     <StyledSignUp>
@@ -33,15 +33,15 @@ export default function ClientsignUp() {
     <StyledFormGroup width={style.width.pc}>
      <StyledFiled>
       <label htmlFor="name">Full Name</label>
-     <StyledInput type="text" id="name" placeholder="Enter you Full name" />
+     <StyledInput type="text" id="name" name="name" placeholder="Enter you Full name" />
      </StyledFiled>
      <StyledFiled>
       <label htmlFor="email">Email</label>
-     <StyledInput type="email" id="email" placeholder="ex:mail@exemple.com" />
+     <StyledInput type="email" id="email" name="email" placeholder="ex:mail@exemple.com" />
      </StyledFiled>
      <StyledFiled>
       <label htmlFor="phone">phone</label>
-     <StyledInput type="text" id="phone" placeholder="ex:+212-689675645" />
+     <StyledInput type="text" id="phone" name="phone" placeholder="ex:+212-689675645" />
      </StyledFiled>
       
       <SubmitGroup>
