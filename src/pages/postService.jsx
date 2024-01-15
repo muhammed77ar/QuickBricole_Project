@@ -22,7 +22,7 @@ export default function PostService(){
                         <input type="text" name="" id="price" placeholder="Enter a price"/>
                         
                     </Section1>
-                    <Section2>
+                    <Section2> 
                         <label htmlFor="">Description:</label>
                         <textarea placeholder="Enter a description"></textarea>
                     </Section2>
