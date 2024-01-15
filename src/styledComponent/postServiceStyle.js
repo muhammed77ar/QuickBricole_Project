@@ -23,7 +23,7 @@ export const InputContainer = styled.div`
     width: 392px;
     height: 55.1px;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 20px; 
     text-transform: capitalize;
     box-shadow: 4.5px 4.5px 3.6px rgba(0, 0, 0, 0.031),
       12.5px 12.5px 10px rgba(0, 0, 0, 0.045),

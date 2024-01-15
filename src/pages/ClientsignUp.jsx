@@ -1,17 +1,24 @@
 import { StyledInput, StyledSignUp ,StyledFiled,
-  StyledFormGroup,StyledIconeContainer,StyledIcone} from "../styledComponent/styledSignUp";
+  StyledFormGroup,StyledIconeContainer,StyledIcone,StyledTitle,
+  SubmitGroup,StyledButton} from "../styledComponent/styledSignUp";
 
 
 import fbImg from '../imgs/facebook.png'
 import google from '../imgs/google.png'
+import { Link } from "react-router-dom";
 const style = {
  width : {pc:"100%"}
 }
 
 export default function ClientsignUp() {
   return (
+    <form action="#" method="POST" >
+
+   
     <StyledSignUp>
-      
+      <StyledTitle>
+        Sign Up
+      </StyledTitle>
       <StyledIconeContainer>
         <StyledIcone>
          <img src={fbImg} alt="" />
@@ -26,19 +33,26 @@ export default function ClientsignUp() {
     <StyledFormGroup width={style.width.pc}>
      <StyledFiled>
       <label htmlFor="name">Full Name</label>
-     <StyledInput type="text" id="name" />
+     <StyledInput type="text" id="name" name="name" placeholder="Enter you Full name" />
      </StyledFiled>
      <StyledFiled>
       <label htmlFor="email">Email</label>
-     <StyledInput type="email" id="email" />
+     <StyledInput type="email" id="email" name="email" placeholder="ex:mail@exemple.com" />
      </StyledFiled>
      <StyledFiled>
       <label htmlFor="phone">phone</label>
-     <StyledInput type="text" id="phone" />
+     <StyledInput type="text" id="phone" name="phone" placeholder="ex:+212-689675645" />
      </StyledFiled>
+      
+      <SubmitGroup>
+       <StyledButton type='submit'>
+        Submit
+      </StyledButton>
+      <p>i have account <Link to='/login'>Login</Link></p>
+      </SubmitGroup>
       </StyledFormGroup>
       </StyledSignUp>
      
-    
+     </form>
   )
 }
