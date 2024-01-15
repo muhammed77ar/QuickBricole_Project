@@ -11,7 +11,6 @@ export default function App2(){
         <GlobalStyle />
         <Navbarr />
         <Outlet />
-        <Footer />
     </div>
     </>)
 }

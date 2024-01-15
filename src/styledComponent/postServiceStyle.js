@@ -36,6 +36,9 @@ export const InputContainer = styled.div`
     @media screen and (max-width:${mobileBreakPoint}){
         margin-top: 10px;
     }
+    @media screen and (max-width: 450px) {
+        width: 80%;
+    }
   }
   
   form {
@@ -62,6 +65,12 @@ input{
     height: 55.65px;
     padding: 0 10px;
     margin-bottom: 15px;
+    @media screen and (max-width: 590px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
 }
 select{
     background-color: #EEEEEE;
@@ -71,6 +80,12 @@ select{
     height: 55.65px;
     padding: 0 10px;
     margin-bottom: 15px;
+    @media screen and (max-width: 590px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
 }
 
 `
@@ -85,6 +100,12 @@ margin-left: 50px;
     border-radius: 8.08px;
     border: none;
     padding: 10px;
+    @media screen and (max-width: 590px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
   }
   @media screen and (max-width:${mobileBreakPoint}) {
     margin-left: 0;
