@@ -53,10 +53,13 @@ flex-direction: row;
 justify-content: center;
 gap: 20px;
 padding: 1px 20px;
-@media screen and (max-width: 600px){
-    width: 90%;
+@media screen and (max-width: 950px){
+    width: 60%;
     flex-direction: column;
     align-items: center;
+}
+@media screen and (max-width: 600px){
+width: 90%;
 }
 `
 export const StyledIcone = styled.div`
@@ -72,7 +75,7 @@ align-items: center;
 img{
   width: 30px;
 }
-@media screen and (max-width:600px) {
+@media screen and (max-width:1000px) {
   width: 90%;
 }
 `
@@ -132,5 +135,18 @@ export const StyledButton = styled.button`
     }
     @media screen and (max-width:1100px){
         margin-top: 10px;
+    }
+`
+
+export const StyledSelect = styled.select`
+background-color: #EEEEEE;
+    border-radius: 8.08px;
+    border: none;
+    /* width: 500px; */
+    height: 55.65px;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    & option{
+      color: #EEEEEE;
     }
 `
