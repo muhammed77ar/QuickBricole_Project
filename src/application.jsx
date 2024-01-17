@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import GlobalStyle from "./styledComponent/Globalstyle";
 import Navbarr from "./component/navbar/navbarr";
-// import Footer from "./component/footer/footer";
+import Footer from "./component/footer/footer";
+
 
 
 export default function App2(){
@@ -11,7 +12,7 @@ export default function App2(){
         <GlobalStyle />
         <Navbarr />
         <Outlet />
-       
+        <Footer />
     </div>
     </>)
 }

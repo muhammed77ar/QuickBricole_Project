@@ -8,23 +8,19 @@ const PhoneBreakPoint = "860px";
 
 export const FooterWrapper = styled.div`
   background-color: #F2FAFA;
-   width: 100%;
+  width: 100%;
   @media (max-width: ${PhoneBreakPoint}) {
-    body {
-      overflow-x: hidden;
-    }
   }
 `;
 export const Footerr = styled.div`
-  height: 300px;
-  display: flex;
-  justify-content: space-around;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   margin-top: 10px;
   @media (max-width: ${PhoneBreakPoint}) {
-    flex-direction: column;
+    grid-template-columns: repeat(1, auto);
     text-align: center;
-    height: 800px;
-    max-width: 100%;
+    padding: 20px; // Add some padding for better spacing
   }
 `;
 export const Section2 = styled.div`
@@ -39,6 +35,7 @@ export const Section2 = styled.div`
 
   li {
     margin-bottom: 5px;
+    width: fit-content;
     .callUs{
       display: flex;
       span{
@@ -50,12 +47,13 @@ export const Section2 = styled.div`
 
   @media (max-width: ${PhoneBreakPoint}) {
     margin: 10px;
-    width: 100%;
-    text-align: center;
     li{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
       .callUs{
         margin-top: 10px;
-        display: block;
         span{
           display: flex;
           justify-content: center;
@@ -72,14 +70,13 @@ export const Section1 = styled.div`
 
   @media (max-width: ${PhoneBreakPoint}) {
     margin: 10px;
-    width: 100%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     .text{
         text-align: center;
-        margin: 0px 20px;
     }
   }
 `;
@@ -141,7 +138,16 @@ export const Icons = styled.div`
   }
 `;
 export const CopyRight = styled.div`
-margin: 10px 0;
+padding: 1px 0px;
 color: #9D9D9D;
 text-align: center;
+p{
+display: flex;
+justify-content: center;
+align-items: center;
+.icon{
+  font-size: 23px;
+  margin-right: 3px;
+}
+}
 `

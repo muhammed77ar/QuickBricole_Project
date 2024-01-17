@@ -2,6 +2,7 @@ import { FooterWrapper, Footerr, Section2, Link, Section1, FooterLogo, Icons, In
 import { IoLocationOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
+import { PiCopyrightLight } from "react-icons/pi";
 
 const socialMediaLinks = {
     instagram: "https://www.instagram.com/",
@@ -80,7 +81,7 @@ export default function Footer() {
         ))}
       </Footerr>
       <CopyRight>
-          <p>2023 Quick Bricole. All right reserved</p>
+        <p><PiCopyrightLight className="icon" />2023 Quick Bricole. All right reserved</p>
       </CopyRight>
     </FooterWrapper>
   );
