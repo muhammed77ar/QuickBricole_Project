@@ -12,9 +12,8 @@ const style = {
 
 export default function ClientsignUp() {
   return (
-    <form action="#" method="POST" >
-
-   
+    
+    
     <StyledSignUp>
       <StyledTitle>
         Sign Up
@@ -56,8 +55,7 @@ export default function ClientsignUp() {
       <p>i have account <Link to='/login'>Login</Link></p>
       </SubmitGroup>
       </StyledFormGroup>
+  
       </StyledSignUp>
-     
-     </form>
   )
 }

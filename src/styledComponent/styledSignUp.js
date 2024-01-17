@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Title } from "./postServiceStyle";
 
 export const StyledSignUp = styled.div`
-height: 100vh;
+min-height: 100vh;
   width: 100%;
 align-items: center;
 margin: 10px 0px;

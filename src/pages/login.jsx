@@ -13,6 +13,7 @@ export default function Login() {
   const [showPassword,SetShowPassword] =useState(false)
   return (
     <StyledSignUp>
+      <form action="">
       <StyledTitle>
         Login
       </StyledTitle>
@@ -46,6 +47,7 @@ export default function Login() {
       </SubmitGroup>
 
       </StyledFormGroup>
+      </form>
       </StyledSignUp>
   )
 }
