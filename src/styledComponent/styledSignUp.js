@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Title } from "./postServiceStyle";
 
 export const StyledSignUp = styled.div`
-height: 100vh;
+min-height: 100vh;
   width: 100%;
 align-items: center;
 margin: 10px 0px;
@@ -17,7 +17,7 @@ gap: 10px 0px;
  margin: auto;
  width: 50%;
 padding:0px 20px  ;
-@media screen and (max-width:600px) {
+@media screen and (max-width:860px) {
   width: 90%;
 }
 
@@ -89,7 +89,7 @@ align-items: center;
 gap: 30px;
 & p {
   margin-top: 20px;
-  font-size: 21.16px;
+  font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 35px; /* 165.406% */
@@ -106,9 +106,12 @@ a:hover{
 }
 
 }
-@media screen and (max-width:600px) {
+@media screen and (max-width:860px) {
   & button {
     width: 60%;
+  }
+  p{
+    font-size: 15px;
   }
   flex-direction: column;
 }

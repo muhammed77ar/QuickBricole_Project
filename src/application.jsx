@@ -3,8 +3,6 @@ import GlobalStyle from "./styledComponent/Globalstyle";
 import Navbarr from "./component/navbar/navbarr";
 import Footer from "./component/footer/footer";
 
-
-
 export default function App2(){
     
     return(<>
@@ -12,7 +10,7 @@ export default function App2(){
         <GlobalStyle />
         <Navbarr />
         <Outlet />
-        <Footer />
+       <Footer />
     </div>
     </>)
 }
