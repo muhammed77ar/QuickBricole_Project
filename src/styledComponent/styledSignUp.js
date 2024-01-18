@@ -7,6 +7,19 @@ min-height: 100vh;
 align-items: center;
 margin: 10px 0px;
 padding-top: 89px ;
+& .flex {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  padding: 10px 100px ;
+  align-items: center;
+  gap: 8px;
+  @media screen and (max-width:900px) {
+    padding:  0px;
+    margin-bottom: 9px;
+    grid-template-columns: 100%;
+  }
+}
 
 `
 export const StyledFiled = styled.div`
@@ -14,8 +27,8 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 gap: 10px 0px;
- margin: auto;
- width: 50%;
+ margin: 2px auto;
+ width: ${({width})=>width||'50%'};
 padding:0px 20px  ;
 @media screen and (max-width:860px) {
   width: 90%;
@@ -30,9 +43,27 @@ justify-content: space-between;
 align-items: flex-start;
 padding: 20px 0px;
 flex-shrink: 0;
-gap: 20px;
+gap: 10px;
 max-width: ${({width})=>width};
-
+.desc {
+  max-height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  @media screen and (max-width:900px) {
+    margin: 10px 20px;
+   }
+}
+.info {
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+   @media screen and (max-width:900px) {
+    margin-bottom: 10px;
+   }
+}
 `
 
 export const StyledInput = styled.input`
@@ -42,6 +73,10 @@ export const StyledInput = styled.input`
  height: 53px;
  border-radius: 8.078px;
 background: #EEE;
+width: ${({width})=>width};
+&:focus{
+  outline: 2px solid black;
+}
 `
 export const StyledTitle = styled(Title)`
 text-align:center;`
@@ -152,4 +187,22 @@ background-color: #EEEEEE;
     & option{
       color: #EEEEEE;
     }
+`
+export const Textarea = styled.textarea`
+
+    width: 90%;
+    min-height: 237px;
+    max-height: 237px;
+    background-color: #eeeeee;
+    border-radius: 8.08px;
+    border: none;
+    padding: 10px;
+    margin: 10px 0px;
+    @media screen and (max-width: 590px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
+  
 `
