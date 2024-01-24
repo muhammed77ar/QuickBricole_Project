@@ -52,7 +52,7 @@ max-width: ${({width})=>width};
   flex-direction: column;
   justify-content: start;
   @media screen and (max-width:900px) {
-    margin: 10px 20px;
+    margin: 10px 60px;
    }
 }
 .info {

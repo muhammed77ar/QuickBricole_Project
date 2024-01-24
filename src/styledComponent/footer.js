@@ -16,7 +16,7 @@ export const Footerr = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: repeat(4, auto);
-  margin-top: 10px;
+  margin-top: 5px;
   @media (max-width: ${PhoneBreakPoint}) {
     grid-template-columns: repeat(1, auto);
     text-align: center;
