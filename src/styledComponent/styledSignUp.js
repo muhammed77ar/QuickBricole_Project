@@ -31,7 +31,7 @@ gap: 10px 0px;
  width: ${({width})=>width||'50%'};
 padding:0px 20px  ;
 @media screen and (max-width:860px) {
-  width: 90%;
+  width: 100%;
 }
 
 `
@@ -52,7 +52,9 @@ max-width: ${({width})=>width};
   flex-direction: column;
   justify-content: start;
   @media screen and (max-width:900px) {
+
     margin: 10px 60px;
+
    }
 }
 .info {
