@@ -4,7 +4,7 @@ import {
   StyledHero,
   StyledSide,
   StyledButton
-} from "../../styledComponent/StyledHome";
+} from "../../styledComponent/home/StyledHome";
 import HeroImg from '../../imgs/hero_img.png'
 import SearchBar from "./SearchBar";
 export default function Hero() {

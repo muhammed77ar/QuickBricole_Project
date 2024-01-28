@@ -5,7 +5,7 @@ export const StyledHero = styled.div`
   padding-top: 100px;
   min-height: 100vh;
   max-width: 100%;
-  background-color: #f2fafa;
+  background-color: #f2fafa;  
 `;
 export const StyledContainer = styled.div`
   display: flex;
@@ -84,26 +84,32 @@ margin: 10px auto;
 display: flex;
 align-items: center;
 justify-content: center;
- input {
+ input,select {
   all: unset;
   background-color: #fff;
-  padding: 18px;
-  
+  padding: 18px ;
+ width: 200px
 }
 .input-border{
    border-right: gray solid 2px;
 }
 .search{
    background-color: #fff;
-  padding: 18px;
-  width: 50%;
+  padding: 17px;
   text-align: center;
+  /* box-shadow: 1px 2px 10px #000; */
   & button{all: unset;cursor: pointer;}
 }
-@media screen and (max-width : 700px) {
-    flex-wrap: wrap;
+@media screen and (max-width : 800px) {
+  background-color: transparent;
+  box-shadow: none;
+  flex-direction: column;
+  justify-content: center;
     gap: 10px;
     width: 100%;
+    .input-border{
+      border: none;
+    }
     .search{
       background-color: transparent;
       & button{

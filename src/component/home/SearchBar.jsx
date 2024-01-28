@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledSearchBr } from '../../styledComponent/StyledHome'
+import { StyledSearchBr } from '../../styledComponent/home/StyledHome'
 import { FcSearch } from "react-icons/fc";
 export default function SearchBar() {
   return (
@@ -8,24 +8,20 @@ export default function SearchBar() {
     <StyledSearchBr>
       <input type="text" name="service"  className='input-border' placeholder='Service' />
       <div> 
-       <input list="ice-cream-flavors" type='text' name="ice-cream-choice"  placeholder='category' className='input-border'/>
-      <datalist id="ice-cream-flavors">
-        <option value="settat"></option>
-        <option value="Coconut"></option>
-        <option value="Mint"></option>
-        <option value="Strawberry"></option>
-        <option value="Vanilla"></option>
-      </datalist>
+      <select id="ice-cream-flavors" className='input-border'>
+        <option value="x  ">category</option>
+        <option value="Coconut">Coconut</option>
+        <option value="Mint">Mint</option>
+        <option value="Strawberry">Strawberry</option>
+        <option value="Vanilla">Vanilla</option>
+      </select>
       </div>
      <div>
-       <input list="ice-cream-flavors" type='text'  name="ice-cream-choice" placeholder='city or location' />
-      <datalist id="ice-cream-flavors">
-        <option value="Chocolate"></option>
-        <option value="Coconut"></option>
-        <option value="Mint"></option>
-        <option value="Strawberry"></option>
-        <option value="Vanilla"></option>
-      </datalist>
+      <select id="ice-cream-flavors">
+        <option value="">city</option>
+        <option value="Coconut">Chocolate</option>
+      
+      </select>
       </div>
       <div className='search'>
         <button type='submit'>
