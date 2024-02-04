@@ -6,11 +6,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { StyledpasswordIcone } from '../styledComponent/StyledpasswordIcone';
 
 import { StyledButton, StyledFiled, StyledFormGroup, StyledIcone, StyledIconeContainer, StyledInput, StyledSignUp, StyledTitle, SubmitGroup } from "../styledComponent/styledSignUp";
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [showPassword, SetShowPassword] = useState(false)
+  const PassRef =useRef()
   return (
     <StyledSignUp>
       <form action="">
@@ -34,8 +35,11 @@ export default function Login() {
           </StyledFiled>
           <StyledFiled style={{ position: 'relative' }}>
             <label htmlFor="password">Password</label>
-            <StyledInput type={`${showPassword ? 'text' : 'password'}`} id="password" name="password" placeholder="type your password" />
-            <StyledpasswordIcone onClick={() => SetShowPassword(!showPassword)}>
+            <StyledInput type={`${showPassword ? 'text' : 'password'}`} id="password" name="password" placeholder="type your password" ref={PassRef}/>
+            <StyledpasswordIcone onClick={() => {
+              SetShowPassword(!showPassword)
+              return PassRef.current.focus();
+              }}>
               {showPassword ? <FaEye /> : < FaEyeSlash />}
             </StyledpasswordIcone>
           </StyledFiled>
