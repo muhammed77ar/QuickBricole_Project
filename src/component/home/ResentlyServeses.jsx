@@ -2,6 +2,7 @@ import React from 'react'
 import { StyledHeding, StyledResentlyContainer } from '../../styledComponent/home/styledSesentlyServese'
 import { StyledCardContianer, StyledCardItem } from '../../styledComponent/home/CardsSyle'
 import imag from '../../imgs/facebook.png'
+import { StyledButtonHome } from '../../styledComponent/home/StyleButton'
 export default function ResentlyServeses() {
   return (
     <StyledResentlyContainer>
@@ -12,7 +13,7 @@ export default function ResentlyServeses() {
         </h1>
       </StyledHeding>
       <StyledCardContianer box='none' width="90%">
-       {[...Array(3)].map((item,key)=>
+       {[...Array(3)].map((item,key)=>(
        <StyledCardItem box={true}>
         <div className="icone">
           <img sizes='300px'
@@ -25,10 +26,14 @@ export default function ResentlyServeses() {
          <p>
           First you have to create a account  here
          </p>
-         <a href="#test">test</a>
+         <a href="#test">Apply Now</a>
         </div>
-       </StyledCardItem>)}
+       </StyledCardItem>))}
       </StyledCardContianer>
+
+        <StyledButtonHome>
+          More Services
+        </StyledButtonHome>
     </StyledResentlyContainer>
   )
 }
