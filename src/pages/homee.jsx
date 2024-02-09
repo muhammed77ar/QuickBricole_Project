@@ -2,6 +2,7 @@ import Card from "../component/home/Card";
 import CategorySection from "../component/home/CategorySection";
 import Hero from "../component/home/Hero";
 import Main from "../component/home/Main";
+import ProfionellsSlider from "../component/home/ProfionellsSlider";
 import ResentlyServeses from "../component/home/ResentlyServeses";
 export default function Homee(){
   return <div className="home">
@@ -10,5 +11,6 @@ export default function Homee(){
       <Main/>
       <ResentlyServeses/>
       <CategorySection/>
+      <ProfionellsSlider/>
   </div>
 }
