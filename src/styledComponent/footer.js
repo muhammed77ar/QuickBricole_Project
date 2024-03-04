@@ -7,7 +7,7 @@ const PhoneBreakPoint = "860px";
 
 
 export const FooterWrapper = styled.div`
-  background-color: #F2FAFA;
+  background-color: #fff;
   width: 100%;
   @media (max-width: ${PhoneBreakPoint}) {
   }

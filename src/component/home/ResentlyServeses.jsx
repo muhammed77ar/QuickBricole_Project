@@ -22,9 +22,9 @@ export default function ResentlyServeses() {
           alt="" />
         </div>
         <div className="content">
-         <h5>Create Account</h5>
+         <h5>Fridge repair</h5>
          <p>
-          First you have to create a account  here
+         I'm seeking a skilled professional for fridge repairs.
          </p>
          <a href="#test">Apply Now</a>
         </div>

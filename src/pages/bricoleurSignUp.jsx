@@ -45,7 +45,7 @@ export default function BricoleurSignUp() {
        
       <div className='desc'>
         <label htmlFor="description">Description</label>
-      <Textarea id='description' placeholder='Tell your clients about your selfe your experience ... ' />
+      <Textarea id='description' placeholder='Tell your clients about your self ,your experience ... ' />
       </div>
       </StyledFormGroup>
       <SubmitGroup>
