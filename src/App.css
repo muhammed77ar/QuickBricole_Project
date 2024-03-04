@@ -45,12 +45,14 @@ html {
 /* swiper */
 .swiper {
   width: 80%;
+  display: flex;
   min-height:350px;
   padding-bottom: 20px;
 }
 
 .swiper-slide {
  height: 80%;
+ width: 50%;
  cursor: pointer;
 }
 

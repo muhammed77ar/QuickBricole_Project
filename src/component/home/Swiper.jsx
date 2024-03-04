@@ -41,16 +41,16 @@ const Profetionals = [
 ]
 
 export default function Slider() {
-  const  [PreView,setPreView] = useState(3)
-  const width = window.innerWidth
+  const  [PreView,setPreView] = useState(null)
+
   useEffect(()=>{
-      if(width<800){
+      if(window.innerWidth<800){
         setPreView(1)
       }else{
         setPreView(3)
       }
   }
-  ,[width])
+  ,[])
   return (
     <>
       <Swiper
@@ -61,7 +61,7 @@ export default function Slider() {
         }}
         modules={[Pagination,Autoplay,Navigation]}
         className="mySwiper"
-        loop={true}
+        // loop={true}
          autoplay={{
           delay: 2500,
           disableOnInteraction: false,
