@@ -1,0 +1,1 @@
+export const loginSeletore = (({login})=>login.authenticated);

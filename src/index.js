@@ -1,47 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { RouterProvider } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import App2 from './application';
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import Homee from './pages/homee';
-import FindProfessional from './pages/findProfessional';
-import FindWork from './pages/findWork';
-import Login from './pages/login';
-import PostService from './pages/postService';
-import QuickService from './pages/quickService';
-import ClientSignUp from './pages/ClientsignUp';
-import BricoleurSignUp from './pages/bricoleurSignUp';
-import Signup from './pages/signup';
+import ReactDOM from 'react-dom/client';
+import router from './router';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-const router = createBrowserRouter([
-        {
-                path : "/",
-                element : <App2 />,
-                children : [
-                        {
-                                path : "",
-                                element : <Homee />
-                        },
-                        {path : "findProfessional", element : <FindProfessional />},
-                        {path : "findWork", element : <FindWork />},
-                        {path : "login", element : <Login /> },
-                        {path : "signup", element : <Signup /> },
-                        {path : "clientsignUp", element : <ClientSignUp />},
-                        {path : "bricoleursignUp", element : <BricoleurSignUp />},
-                        {path : "postService", element : <PostService />},
-                        {path : "quickService", element : <QuickService />},
-                ]
-        }
-])
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-        <RouterProvider router={router}>
-                <App2 />
-        </RouterProvider>
+        <Provider store={store}>
+                <RouterProvider router={router}/>
+        </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
