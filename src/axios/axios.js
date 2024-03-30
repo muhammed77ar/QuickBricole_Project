@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL:  'http://127.0.0.1:8000/api',
+    baseURL:  process.env.REACT_APP_BASE_URL+'/api',
     withCredentials:true,
     withXSRFToken:true,
     headers:{'Content-Type': ['multipart/form-data',
@@ -11,7 +11,8 @@ const axiosClient = axios.create({
 }
 )
 axiosClient.interceptors.request.use((config)=>{
-  const token = localStorage.getItem('access_token');
+  const token = window.localStorage.getItem('access_token');
+  console.log(token)
   config.headers.Authorization = 'Bearer '+token
   return config
 })
@@ -20,8 +21,8 @@ axiosClient.interceptors.response.use((response)=>{
   return response
 },(err)=>{
   const {response}= err;
-  if(response.status === 401){
-    localStorage.removeItem('access_token')
+  if(response?.status === 401){
+    window.localStorage.removeItem('access_token')
   }
   throw err
 })

@@ -22,7 +22,7 @@ export default function NavbarrClient() {
 
     return <>
         <NavbarItems scroll={scrolled}>
-            <Link to='/'><LogoImg src="../photos/logo-color.svg" /></Link>
+            <Link to='/client'><LogoImg src="../photos/logo-color.svg" /></Link>
             <Menu onClick={handelClick}>
                 {clicked ? <CgClose className="icons" /> : <IoMenu className="icons" />}
             </Menu>

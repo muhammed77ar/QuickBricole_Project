@@ -20,7 +20,7 @@ export default function NavbarHandyman() {
 
     return <>
         <NavbarItems scroll={scrolled}>
-            <Link to='/'><LogoImg src="../photos/logo-color.svg" /></Link>
+            <Link to='/handyman'><LogoImg src="../photos/logo-color.svg" /></Link>
             <Menu onClick={handelClick}>
                 {clicked ? <CgClose className="icons" /> : <IoMenu className="icons" />}
             </Menu>

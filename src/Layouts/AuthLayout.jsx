@@ -18,7 +18,10 @@ export default function AuthLayout(){
     const getUseInfo = async()=>{
        try {
             setIsLoading(true)
-           const  {data :user} = await axiosClient.get('/user')
+           const  res = await axiosClient.get('/user').catch(err=>console.log(err))
+           if(res?.status === 200){
+            const {data : user} =res;
+           
            if(user.role === 'client'){
                 return navigate('/client')
             } 
@@ -27,9 +30,10 @@ export default function AuthLayout(){
         }
            dispatche(login(user))
        }
+       }
        catch (err)
        {
-        console.err(err)
+        console.log(err)
        }
         
     }
