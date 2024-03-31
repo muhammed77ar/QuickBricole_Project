@@ -5,11 +5,12 @@ export const loginSlice = createSlice({
   name:'login',
   initialState:insialState,
   reducers:{
-    login:(state,payload)=>{
+    login:(state,{payload})=>{
     return {...state,authenticated:{accessToken:true,user:payload}}
     },
     logout:(state)=>{
-    return {...state,authenticated:{accessToken:null,user:{}}}
+      localStorage.removeItem('access_token');
+    return {...state,authenticated:{accessToken:false,user:{}}}
     },
     
   }

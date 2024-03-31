@@ -6,6 +6,7 @@ export const ClientAPI = {
   },
   logout : async ()=>{
     return await axiosClient.post('/logout');
+    
   },
   updateProfile : async (data,id)=>{
     return await axiosClient.post('/users/'+id,data);

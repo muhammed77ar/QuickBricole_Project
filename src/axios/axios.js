@@ -4,9 +4,10 @@ const axiosClient = axios.create({
     baseURL:  process.env.REACT_APP_BASE_URL+'/api',
     withCredentials:true,
     withXSRFToken:true,
-    headers:{'Content-Type': ['multipart/form-data',
+     headers:{'Content-Type': ['multipart/form-data',
       'application/json'],
       'Accept':'application/json', 
+    "Authorization":`Bearer ${localStorage.getItem('access_token')}`
   }
 }
 )
