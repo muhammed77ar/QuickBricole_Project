@@ -8,19 +8,19 @@ import { useDispatch } from 'react-redux'
 function App() {
   const dispatche = useDispatch()
   useEffect(()=>{
-        const getUseInfo = async()=>{
-       try {
-           const  res = await axiosClient.get('/user').catch(err=>console.log(err))
-           if(res?.status === 200){
-            const {data : user} =res;
-            dispatche(login(user))
-       }
-       }
-       catch (err)
-       {
+    const getUseInfo = async () => {
+      try {
+        const res = await axiosClient.get('/user').catch(err => console.log(err))
+        if (res?.status === 200) {
+          const { data: user } = res;
+          dispatche(login(user))
+        }
+      }
+      catch (err) {
         console.log(err)
-       }}
-       getUseInfo()
+      }
+    }
+    getUseInfo()
   },[])
   return (
     <>
