@@ -4,6 +4,7 @@ import router from './router'
 import axiosClient from './axios/axios'
 import { login } from './redux/slices/loginSlice'
 import { useDispatch } from 'react-redux'
+import { setCategories } from './redux/slices/categoriesSlice'
 
 function App() {
   const dispatche = useDispatch()
@@ -22,6 +23,22 @@ function App() {
     }
     getUseInfo()
   },[])
+
+  const getCategory = async () => {
+    try{
+     const response = await axiosClient.get(`/categories`)
+     if (response?.status === 200) {
+      const {data} = response;
+      dispatche(setCategories(data))
+    }
+    }catch(err){
+     console.log(err)
+    }
+
+ }
+ useEffect(()=>{
+   getCategory()
+ }, [])
   return (
     <>
       <RouterProvider router={router}/>

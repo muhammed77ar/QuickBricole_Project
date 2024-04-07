@@ -22,7 +22,7 @@ export default function CategorySection() {
           ))}
       </CardContainer>
      <StyledButtonHome>
-      More Ctegorys
+      More Categories
      </StyledButtonHome>
     </StyledResentlyContainer>
   )

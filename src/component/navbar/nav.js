@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 const mobileBreakPoint = "860px";
 
 export const NavbarItems = styled.div`
+position: relative;
   padding:50px 20px;
   background-color: white;
   height: 80px;
@@ -130,5 +131,127 @@ export const LinkItems = styled.ul`
         z-index: 1;
       `}
   }
+  
+`;
+
+export const ProfileMenuContainer = styled.div`
+@media screen and (max-width: ${mobileBreakPoint}) {
+position: absolute;
+right: 100px;
+z-index: 1;
+
+}
+  .menu-trigger {
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+  }
+  .drop-down-menu {
+    position: absolute;
+    top: 90px;
+    right: 7px;
+    @media screen and (max-width: ${mobileBreakPoint}){
+      right: -15px;
+      top: 60px;
+    }
+    background-color: #71797E;
+    box-shadow:
+  0.5px 1.2px 1px rgba(0, 0, 0, 0.019),
+  1.1px 2.7px 2.1px rgba(0, 0, 0, 0.028),
+  1.8px 4.5px 3.5px rgba(0, 0, 0, 0.034),
+  2.8px 6.8px 5.3px rgba(0, 0, 0, 0.04),
+  4px 9.8px 7.6px rgba(0, 0, 0, 0.045),
+  5.7px 13.8px 10.8px rgba(0, 0, 0, 0.05),
+  8px 19.6px 15.3px rgba(0, 0, 0, 0.056),
+  11.7px 28.5px 22.3px rgba(0, 0, 0, 0.062),
+  18px 43.9px 34.3px rgba(0, 0, 0, 0.071),
+  32px 78px 61px rgba(0, 0, 0, 0.09)
+;
+    border-radius: 10px;
+    padding: 30px 10px;
+    width: 230px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      height: 20px;
+      width: 30px;
+      background-color: #71797E;
+      clip-path: polygon(51.1% 0%, 100% 100%, 0% 100%);
+      box-shadow:
+  0.5px 1.2px 1px rgba(0, 0, 0, 0.019),
+  1.1px 2.7px 2.1px rgba(0, 0, 0, 0.028),
+  1.8px 4.5px 3.5px rgba(0, 0, 0, 0.034),
+  2.8px 6.8px 5.3px rgba(0, 0, 0, 0.04),
+  4px 9.8px 7.6px rgba(0, 0, 0, 0.045),
+  5.7px 13.8px 10.8px rgba(0, 0, 0, 0.05),
+  8px 19.6px 15.3px rgba(0, 0, 0, 0.056),
+  11.7px 28.5px 22.3px rgba(0, 0, 0, 0.062),
+  18px 43.9px 34.3px rgba(0, 0, 0, 0.071),
+  32px 78px 61px rgba(0, 0, 0, 0.09)
+;
+    }
+    h3{
+      font-size: 20px;
+      color: white;
+      text-transform: capitalize;
+      text-align: center;
+      margin: 0;
+    }
+    span{
+      color: lightgray;
+      font-size: 12px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+    ul{
+      list-style: none;
+      margin-top: 40px;
+    }
+    
+    ul li a{
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      margin-left: 15px;
+      transition: 0.2s;
+    }
+    ul li:hover a{
+      color: lightgray;
+      cursor: pointer;
+    }
+    ul li:hover .iconMenu{
+      opacity: 1;
+      cursor: pointer;
+      color: lightgray;
+    }
+    .iconMenu{
+      color: white;
+      font-size: 25px;
+      transition: 0.2s;
+    }
+    .DropdownItem{
+      display: flex;
+      margin: 15px 0;
+    }
+  }
+  .drop-down-menu.active{
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition: 0.2s ease;
+    }
+    .drop-down-menu.inactive{
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: 0.2s ease;
+    }
   
 `;
