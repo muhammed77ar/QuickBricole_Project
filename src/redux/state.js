@@ -4,6 +4,7 @@ export const insialState = {
         },
         accessToken : localStorage.getItem('access_token') ,
       },
+      categories: [],
       projects :[],
       handymans :[],
       nearerHandymans :[],

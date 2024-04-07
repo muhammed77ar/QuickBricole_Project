@@ -5,7 +5,6 @@ width: ${({width})=> width||'80%'};
 margin: 30px auto;
 background-color: #fff;
 padding: 20px;
-box-shadow:${({box})=> box||'0px 20px 30px rgba(0, 0, 0, 0.09)'} ;
 display: flex;
 justify-content: ${({box})=> box?'space-around':'center'};
 align-items: center;

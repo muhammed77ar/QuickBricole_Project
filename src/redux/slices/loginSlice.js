@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {insialState} from "../state";;
+import {insialState} from "../state";
 // console.log(iniState)
 export const loginSlice = createSlice({
   name:'login',
@@ -12,7 +12,6 @@ export const loginSlice = createSlice({
       localStorage.removeItem('access_token');
     return {...state,authenticated:{accessToken:false,user:{}}}
     },
-    
   }
 })
 export const {login,logout,setUser}=loginSlice.actions;

@@ -1,16 +1,20 @@
-import { LinkItems, LogoImg, Menu, NavbarItems } from "./nav"
+import { LinkItems, LogoImg, Menu, NavbarItems, ProfileMenuContainer } from "./nav"
 import { Link, useNavigate } from "react-router-dom"
 import { IoMenu } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
-import {  useState } from "react";
+import {  useEffect, useRef, useState } from "react";
 import { ClientAPI } from "../../API/client";
 import {  logout } from "../../redux/slices/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSeletore } from "../../redux/selectores";
+import { FaRegUserCircle } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
 
 export default function NavbarHandyman() {
     const [clicked, setClicked] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [triggerMenu, setTriggerMenu] = useState(false)
     const dispatche = useDispatch();
     const navigate = useNavigate()
     const {user} = useSelector(loginSeletore)
@@ -18,12 +22,28 @@ export default function NavbarHandyman() {
     window.addEventListener("scroll", () =>{
         window.scrollY > 35 ? setScrolled(true) : setScrolled(false)
       })
+
+    const menuRef = useRef()
+    useEffect(()=>{
+        const handel = (e) =>{
+            if (!menuRef.current.contains(e.target)) {
+                setTriggerMenu(false)
+            }
+            
+        }
+        document.addEventListener("mousedown", handel)
+        return () => {
+            document.removeEventListener("mousedown", handel)
+        }
+    })
     const handelClick = () => {
         setClicked(!clicked)
     }
     const linkMenu = [
         { page: "Home", href: "/handyman" },
         { page: "Find work", href: "/handyman/findWork" },
+        {page: "Contact Us", href:"#"},
+        {page: "About Us", href:"#"},
     ];
 
     const  logOut  = async () =>{
@@ -45,15 +65,44 @@ export default function NavbarHandyman() {
                         <Link onClick={handelClick} activeClassName="active"  className={`navLinks ${link.className}`} to={link.href}>{link.page}</Link>
                     </li>
                 ))}
-                <li>
-                    <img style={{width:'40px',height:'40px',borderRadius:'100%'}} src={process.env.REACT_APP_BASE_URL+image} alt="profileimage"/>
-                </li>
-                <li>
+                {/* <li>
                     <button onClick={()=>{
                       logOut()
                     }}>logout handyman</button>
-                </li>
+                </li> */}
             </LinkItems>
+            <ProfileMenuContainer ref={menuRef}>
+                    <div className="menu-trigger" onClick={()=> setTriggerMenu(!triggerMenu)}>
+                        <img src={process.env.REACT_APP_BASE_URL + image} alt="profileimage" />
+                    </div>
+                    <div className={`drop-down-menu ${triggerMenu ? 'active' : 'inactive'}`}>
+                        <h3>{user?.name}</h3>
+                        <span>{user?.email}</span>
+                        {/* <div className="line"></div> */}
+                        <ul>
+                            <li className="DropdownItem">
+                                <FaRegUserCircle className="iconMenu" />
+                                <Link to={"/handyman/profile"}>show profile</Link>
+                            </li>
+                            <li className="DropdownItem">
+                                <MdEdit className="iconMenu" />
+                                <a href="#">Edit Profile</a>
+                            </li>
+                            <li className="DropdownItem">
+                                <IoMdLogOut className="iconMenu" />
+                                <a  onClick={() => logOut()}>Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ProfileMenuContainer>
         </NavbarItems>
     </>
+  }
+
+  function DropdownItems(props){
+    return(
+        <li>
+            
+        </li>
+    )
   }

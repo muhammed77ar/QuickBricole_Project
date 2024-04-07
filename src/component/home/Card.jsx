@@ -20,7 +20,7 @@ export default function Card() {
            {/* <img src={} alt="" /> */}
         </div>
         <div className="content">
-         <h5>Search work </h5>
+         <h5>Search For Work</h5>
          <p>
           Search the best Services here
          </p>

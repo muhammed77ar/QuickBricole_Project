@@ -15,6 +15,7 @@ import GuestLayout from './Layouts/GuestLayout';
 import ClientLayout from './Layouts/ClientLayout';
 import HandymanLayout from './Layouts/HandymanLayout';
 import AuthLayout from './Layouts/AuthLayout';
+import HandymanProfile from './pages/handymanProfile';
 
 const router = createBrowserRouter([
         {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
                           element : <Homee/>
                         },
                         {path : "/handyman/findWork", element : <FindWork />},
+                        {path : "/handyman/profile", element : <HandymanProfile />},
                 ]
         },
         {

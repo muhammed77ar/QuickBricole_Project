@@ -31,21 +31,21 @@ export default function Login() {
       const {data} = await axiosClient.post('/login',payload);
       console.log(data)
 
-      if(data?.token)
-      {
-       const {user,token}  = data
-       localStorage.setItem('access_token',token);
-       console.log(user)
-       dispatche(login(user))
+    if (data?.token) {
+      const { user, token } = data
+      localStorage.setItem('access_token', token);
       console.log(user)
-       if(user?.role === 'client'){
-                navigate('/client')
-            } 
-            else if(user?.role === 'handyman'){
-              navigate('/handyman')}
- 
+      dispatche(login(user))
+      console.log(user)
+      if (user?.role === 'client') {
+        navigate('/client')
       }
-   
+      else if (user?.role === 'handyman') {
+        navigate('/handyman')
+      }
+
+    }
+
   }
         
   return (
