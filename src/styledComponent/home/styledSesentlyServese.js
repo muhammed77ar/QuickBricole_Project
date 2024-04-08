@@ -8,11 +8,10 @@ text-align: center;
 margin-top: 40px  
 `
 export const StyledHeding = styled.div`
-margin: 0px 60px;
+margin: 30px 60px;
 text-align: start;
 p{
   color: #9D9D9D;
-
 }
 h1{
   

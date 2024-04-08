@@ -5,21 +5,24 @@ const mobileBreakPoint = "700px";
 export const Container = styled.div`
 .heroProfile{
     margin-top: 100px;
-    height: 340px;
+    height: 300px;
     background-color: white;
     .banner{
-    background-image: url("../photos/fader1.jpg");
+    background-image: url("../photos/wave (1).png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 180px;    
+    height: 400px; 
+    @media screen and (max-width: ${mobileBreakPoint}){
+        height: 550px;
+    } 
 }
 .infosContainer{
     position: relative;
     img{
         position: absolute;
-        top: -70px;
+        top: -300px;
         left: 80px;
         width: 180px;
         height: 180px;
@@ -35,13 +38,13 @@ export const Container = styled.div`
 ;
 @media screen and (max-width: ${mobileBreakPoint}){
     position: static;
-    transform: translateY(-70px);
+    transform: translateY(-400px);
 }
     }
     .infos{
         position: absolute;
         left: 320px;
-        top: 20px;
+        top: -225px;
         h3{
             text-transform: capitalize;
             font-weight: 600;
@@ -79,7 +82,7 @@ export const Container = styled.div`
 }
 @media screen and (max-width: ${mobileBreakPoint}) {
     .heroProfile {
-        height: auto;
+        height: 520px;
       .infosContainer {
         position: static;
         display: flex;
@@ -91,9 +94,9 @@ export const Container = styled.div`
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 10px;
+          gap: 5px;
           align-items: center;
-          transform: translateY(-20px);
+          transform: translateY(-360px);
         }
       }
     }

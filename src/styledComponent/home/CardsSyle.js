@@ -2,16 +2,14 @@ import styled from "styled-components"
 export const StyledCardContianer = styled.div`
 
 width: ${({width})=> width||'80%'};
-margin: 30px auto;
-background-color: #fff;
-padding: 20px;
+margin: 40px auto;
 display: flex;
-justify-content: ${({box})=> box?'space-around':'center'};
+justify-content: center;
 align-items: center;
 gap: 30px;
+height: fit-content;
 @media screen and (max-width :700px) {
   flex-direction: column;
-   
 }
 `
 export const StyledCardItem = styled.div`
@@ -38,6 +36,8 @@ box-shadow:${({box})=> box?'0px 1px 6px 0px rgba(0, 0, 0, 0.10)':'none'} ;
     width: 100%;
   }
 }
+
+
 gap: 15px;
 .content{
   text-align: center;
