@@ -146,7 +146,7 @@ z-index: 1;
       width: 40px;
       height: 40px;
       border-radius: 100%;
-      overflow: hidden;
+      object-fit: cover;
       cursor: pointer;
     }
   }
