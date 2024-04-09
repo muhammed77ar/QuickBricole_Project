@@ -13,7 +13,8 @@ function App() {
       try {
         const res = await axiosClient.get('/user').catch(err => console.log(err))
         if (res?.status === 200) {
-          const { data: user } = res;
+          const { data } = res;
+          const user = data.data
           dispatche(login(user))
         }
       }

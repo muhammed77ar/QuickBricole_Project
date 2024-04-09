@@ -20,7 +20,9 @@ export default function AuthLayout(){
             setIsLoading(true)
            const  res = await axiosClient.get('/user').catch(err=>console.log(err))
            if(res?.status === 200){
-            const {data : user} =res;
+            const {data} =res;
+
+            const user = data.data
            
            if(user.role === 'client'){
                 return navigate('/client')
