@@ -27,7 +27,7 @@ export const Container = styled.div`
         width: 180px;
         height: 180px;
         border-radius: 100%;
-        overflow: hidden;
+        object-fit: cover;
         border: 5px solid white;
         box-shadow:
   2.5px 2.4px 2.7px rgba(0, 0, 0, 0.043),
