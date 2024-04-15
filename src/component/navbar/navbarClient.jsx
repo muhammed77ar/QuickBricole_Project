@@ -65,17 +65,17 @@ export default function NavbarrClient() {
                 ))}
             </LinkItems>
             <ProfileMenuContainer ref={menuRef}>
-                    <div className="menu-trigger" onClick={()=> setTriggerMenu(!triggerMenu)}>
-                        <img src={process.env.REACT_APP_BASE_URL + image} alt="profileimage" />
-                    </div>
+                <div className="menu-trigger" onClick={() => setTriggerMenu(!triggerMenu)}>
+                    <img src={process.env.REACT_APP_BASE_URL + image} className={image === "/storage/images/users/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" ? "imageDefault" : "image"
+                    } alt="profileimage" />
+                </div>
                     <div className={`drop-down-menu ${triggerMenu ? 'active' : 'inactive'}`}>
                         <h3>{user?.name}</h3>
                         <span>{user?.email}</span>
-                        {/* <div className="line"></div> */}
                         <ul>
                             <li className="DropdownItem">
                                 <FaRegUserCircle className="iconMenu" />
-                                <a href="#">show profile</a>
+                                <a href="client/profile">show profile</a>
                             </li>
                             <li className="DropdownItem">
                                 <MdEdit className="iconMenu" />

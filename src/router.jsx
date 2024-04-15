@@ -16,6 +16,7 @@ import ClientLayout from './Layouts/ClientLayout';
 import HandymanLayout from './Layouts/HandymanLayout';
 import AuthLayout from './Layouts/AuthLayout';
 import HandymanProfile from './pages/handymanProfile';
+import ClientProfile from './pages/ClientProfile';
 
 const router = createBrowserRouter([
         {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
                         {path : "client/bricoleursignUp", element : <BricoleurSignUp />},
                         {path : "client/postService", element : <PostService />},
                         {path : "client/quickService", element : <QuickService />},
+                        {path : "client/profile", element : <ClientProfile />},
                 ]
         },
         {
