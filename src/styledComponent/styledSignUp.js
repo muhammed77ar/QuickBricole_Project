@@ -36,7 +36,7 @@ padding:0px 20px  ;
 
 `
 
-export const StyledFormGroup = styled.div`
+export const StyledFormGroup = styled.form`
 display: flex;
 flex-direction: column;
 justify-content: space-between;
