@@ -142,11 +142,19 @@ z-index: 1;
 
 }
   .menu-trigger {
-    img {
+    .image {
       width: 40px;
       height: 40px;
       border-radius: 100%;
-      overflow: hidden;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .imageDefault {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 2px solid black;
       cursor: pointer;
     }
   }
@@ -158,43 +166,27 @@ z-index: 1;
       right: -15px;
       top: 60px;
     }
-    background-color: #71797E;
-    box-shadow:
-  0.5px 1.2px 1px rgba(0, 0, 0, 0.019),
-  1.1px 2.7px 2.1px rgba(0, 0, 0, 0.028),
-  1.8px 4.5px 3.5px rgba(0, 0, 0, 0.034),
-  2.8px 6.8px 5.3px rgba(0, 0, 0, 0.04),
-  4px 9.8px 7.6px rgba(0, 0, 0, 0.045),
-  5.7px 13.8px 10.8px rgba(0, 0, 0, 0.05),
-  8px 19.6px 15.3px rgba(0, 0, 0, 0.056),
-  11.7px 28.5px 22.3px rgba(0, 0, 0, 0.062),
-  18px 43.9px 34.3px rgba(0, 0, 0, 0.071),
-  32px 78px 61px rgba(0, 0, 0, 0.09)
-;
+background: rgba(61, 126, 182, 0.63);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(14.1px);
+-webkit-backdrop-filter: blur(14.1px);
+
     border-radius: 10px;
     padding: 30px 10px;
     width: 230px;
     &::before {
       content: "";
       position: absolute;
-      top: -14px;
+      top: -15px;
       right: 20px;
-      height: 20px;
-      width: 30px;
-      background-color: #71797E;
+      height: 15px;
+      width: 25px;
       clip-path: polygon(51.1% 0%, 100% 100%, 0% 100%);
-      box-shadow:
-  0.5px 1.2px 1px rgba(0, 0, 0, 0.019),
-  1.1px 2.7px 2.1px rgba(0, 0, 0, 0.028),
-  1.8px 4.5px 3.5px rgba(0, 0, 0, 0.034),
-  2.8px 6.8px 5.3px rgba(0, 0, 0, 0.04),
-  4px 9.8px 7.6px rgba(0, 0, 0, 0.045),
-  5.7px 13.8px 10.8px rgba(0, 0, 0, 0.05),
-  8px 19.6px 15.3px rgba(0, 0, 0, 0.056),
-  11.7px 28.5px 22.3px rgba(0, 0, 0, 0.062),
-  18px 43.9px 34.3px rgba(0, 0, 0, 0.071),
-  32px 78px 61px rgba(0, 0, 0, 0.09)
-;
+background: rgba(61, 126, 182, 0.63);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(14.1px);
+-webkit-backdrop-filter: blur(14.1px);
     }
     h3{
       font-size: 20px;
@@ -204,7 +196,7 @@ z-index: 1;
       margin: 0;
     }
     span{
-      color: lightgray;
+      color: white;
       font-size: 12px;
       text-align: center;
       display: flex;

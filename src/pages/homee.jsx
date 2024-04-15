@@ -6,7 +6,7 @@ import NewsSubscription from "../component/home/NewsSubscription";
 import ProfionellsSlider from "../component/home/ProfionellsSlider";
 import ResentlyServeses from "../component/home/ResentlyServeses";
 export default function Homee(){
-  return <div className="home">
+  return <div>
       <Hero/>
       <Card/>
       <Main/>

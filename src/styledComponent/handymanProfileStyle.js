@@ -5,26 +5,106 @@ const mobileBreakPoint = "700px";
 export const Container = styled.div`
 .heroProfile{
     margin-top: 100px;
-    height: 340px;
+    height: 300px;
     background-color: white;
     .banner{
-    background-image: url("../photos/fader1.jpg");
+    background-image: url("../photos/wave (1).png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 180px;    
+    height: 400px; 
+    @media screen and (max-width: ${mobileBreakPoint}){
+        height: 550px;
+    }
 }
 .infosContainer{
     position: relative;
+    .button-57 {
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: absolute;
+  top: -390px;
+  right: 20px;
+  @media screen and (max-width: ${mobileBreakPoint}){
+    top: 10px;
+    right: 10px;
+  }
+  border-radius: 80px;
+  overflow: hidden;
+  border: none;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  width: 80px;
+  padding: 5px 0;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-57 span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+  font-size: 20px;
+  text-align: center;
+}
+
+.button-57 span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.button-57:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.button-57:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.button-57:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  display: flex;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
     img{
         position: absolute;
-        top: -70px;
+        top: -300px;
         left: 80px;
         width: 180px;
         height: 180px;
         border-radius: 100%;
-        overflow: hidden;
+        object-fit: cover;
         border: 5px solid white;
         box-shadow:
   2.5px 2.4px 2.7px rgba(0, 0, 0, 0.043),
@@ -35,13 +115,13 @@ export const Container = styled.div`
 ;
 @media screen and (max-width: ${mobileBreakPoint}){
     position: static;
-    transform: translateY(-70px);
+    transform: translateY(-400px);
 }
     }
     .infos{
         position: absolute;
         left: 320px;
-        top: 20px;
+        top: -225px;
         h3{
             text-transform: capitalize;
             font-weight: 600;
@@ -79,7 +159,7 @@ export const Container = styled.div`
 }
 @media screen and (max-width: ${mobileBreakPoint}) {
     .heroProfile {
-        height: auto;
+        height: 520px;
       .infosContainer {
         position: static;
         display: flex;
@@ -91,9 +171,9 @@ export const Container = styled.div`
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 10px;
+          gap: 5px;
           align-items: center;
-          transform: translateY(-20px);
+          transform: translateY(-360px);
         }
       }
     }

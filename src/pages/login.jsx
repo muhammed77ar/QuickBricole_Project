@@ -32,18 +32,20 @@ export default function Login() {
       console.log(data)
 
     if (data?.token) {
-      const { user, token } = data
+      const { token } = data
       localStorage.setItem('access_token', token);
-      console.log(user)
-      dispatche(login(user))
-      console.log(user)
-      if (user?.role === 'client') {
-        navigate('/client')
-      }
-      else if (user?.role === 'handyman') {
-        navigate('/handyman')
-      }
-
+      axiosClient.get("/user")
+        .then(({ data }) => {
+          const user = data.data
+          console.log(user)
+          dispatche(login(user))
+          if (user?.role === 'client') {
+            navigate('/client')
+          }
+          else if (user?.role === 'handyman') {
+            navigate('/handyman')
+          }
+        })
     }
 
   }
