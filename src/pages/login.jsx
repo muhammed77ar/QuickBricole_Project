@@ -20,7 +20,7 @@ export default function Login() {
    const navigate = useNavigate()
   
   const handelSubmit = async (e)=>{
-    e.preventDefault()
+     e.preventDefault()
       const payload = {
         email : emailRef.current.value,
         password : passwordRef.current.value
@@ -52,7 +52,6 @@ export default function Login() {
         
   return (
     <StyledSignUp>
-      <form  onSubmit={handelSubmit}>
         <StyledTitle>
           Login
         </StyledTitle>
@@ -66,7 +65,7 @@ export default function Login() {
             <span>Sign up with Goolge</span>
           </StyledIcone>
         </StyledIconeContainer>
-        <StyledFormGroup width={'100%'}>
+        <StyledFormGroup   onSubmit={handelSubmit} width={'100%'}>
           <StyledFiled>
             <label htmlFor="email">Email</label>
             <StyledInput ref={emailRef} type="email" id="email" name="email" placeholder="ex:mail@exemple.com" />
@@ -89,7 +88,6 @@ export default function Login() {
           </SubmitGroup>
 
         </StyledFormGroup>
-      </form>
     </StyledSignUp>
   )
 }
