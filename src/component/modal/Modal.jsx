@@ -357,6 +357,14 @@ export default function Modal({ setShowModal, user }) {
                         <input type="text" placeholder="Enter your phone number" />
                     </div>
                   </div>
+                  <div class="form-row">
+                    <div class="input-data">
+                      <input type="password" placeholder="Enter your new password"  />
+                    </div>
+                    <div class="input-data">
+                        <input type="password" placeholder="Confirm your new password" />
+                    </div>
+                  </div>
                 <div class="form-row">
                   <div class="input-data">
                     <select>
