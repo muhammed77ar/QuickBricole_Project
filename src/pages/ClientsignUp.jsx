@@ -8,7 +8,6 @@ import {
   StyledTitle,
   SubmitGroup,
   StyledButton,
-  StyledSelect,
 } from "../styledComponent/styledSignUp";
 
 import fbImg from "../imgs/facebook.png";
@@ -16,20 +15,29 @@ import google from "../imgs/google.png";
 import { Link, useNavigate } from "react-router-dom";
 import { regesterAPI } from "../API/register";
 import { useRef, useState } from "react";
+import { StyledpasswordIcone } from "../styledComponent/StyledpasswordIcone";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+import { scrollToTop } from './scrollToTop';
+import Success from "../component/Success";
+import { useGetGeoLocation } from "../hooks/getGeioLocation";
 const style = {
   width: { pc: "100%" },
 };
 
 export default function ClientsignUp() {
   const [isCreated,setIsCreated] = useState(false)
+  const [showPassword, SetShowPassword] = useState(false)
   const navigate =useNavigate()
+  const {address ,lon,lat} = useGetGeoLocation()
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const phoneRef = useRef();
   const cityRef = useRef();
+  const passwordRefConfirm = useRef();
 
-  const register = async (userData) => {
+const register = async (userData) => {
     
   await regesterAPI.registerClient(userData).then(
     (res)=>{
@@ -37,34 +45,35 @@ export default function ClientsignUp() {
         setIsCreated(true);
         setTimeout(()=>{
           navigate('/login')
-        },1000)
+        },2000)
       }
     }
   )
     .catch(res=>console.log(res));
     
   };
+
   const handelSubmit = (e) => {
     e.preventDefault()
     const userData = {
       name:nameRef.current.value,
       city: cityRef.current.value,
-      lon: "3",
-      lat: "2",
+      lon: lon,
+      lat: lat,
       // image: "",
       phone_number: phoneRef.current.value,
       email: emailRef.current.value,
-      password: "12345678",
-      password_confirmation : "12345678",
+      password: passwordRef.current.value,
+      password_confirmation : passwordRefConfirm.current.value,
     };
     console.log(userData)
     register(userData);
   };
+ 
+
   if(isCreated){
-    return <StyledSignUp><div style={{}}>
-      created
-    </div>
-    </StyledSignUp> 
+    scrollToTop();
+    return <Success/>
   }
   return (
     <StyledSignUp>
@@ -110,7 +119,25 @@ export default function ClientsignUp() {
         </StyledFiled>
         <StyledFiled>
           <label htmlFor="city">Location</label>
-          <StyledInput type="text" id="city" ref={cityRef} placeholder="City " />
+          <StyledInput type="text" id="city" defaultValue={address?.city} ref={cityRef} placeholder="City " />
+        </StyledFiled>
+        <StyledFiled style={{ position: 'relative' }}>
+            <label htmlFor="password">Password</label>
+            <StyledInput ref={passwordRef}  type={`${showPassword ? 'text' : 'password'}`} id="password" name="password" placeholder="type your password" />
+            <StyledpasswordIcone onClick={() => {
+              SetShowPassword(!showPassword)
+              }}>
+              {showPassword ? <FaEye /> : < FaEyeSlash />}
+            </StyledpasswordIcone>
+        </StyledFiled>
+        <StyledFiled style={{ position: 'relative' }}>
+            <label htmlFor="passwordConfirm">Password</label>
+            <StyledInput ref={passwordRefConfirm}  type={`${showPassword ? 'text' : 'password'}`} id="passwordConfirm"  placeholder="confirm  your password" />
+            <StyledpasswordIcone onClick={() => {
+              SetShowPassword(!showPassword)
+              }}>
+              {showPassword ? <FaEye /> : < FaEyeSlash />}
+            </StyledpasswordIcone>
         </StyledFiled>
         <SubmitGroup>
           <StyledButton type="submit">Submit</StyledButton>

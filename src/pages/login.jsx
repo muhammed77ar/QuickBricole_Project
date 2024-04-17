@@ -75,7 +75,6 @@ export default function Login() {
             <StyledInput ref={passwordRef}  type={`${showPassword ? 'text' : 'password'}`} id="password" name="password" placeholder="type your password" />
             <StyledpasswordIcone onClick={() => {
               SetShowPassword(!showPassword)
-              return passwordRef.current.focus();
               }}>
               {showPassword ? <FaEye /> : < FaEyeSlash />}
             </StyledpasswordIcone>
