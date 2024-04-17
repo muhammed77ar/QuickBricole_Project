@@ -8,7 +8,6 @@ import {
   StyledTitle,
   SubmitGroup,
   StyledButton,
-  StyledSelect,
 } from "../styledComponent/styledSignUp";
 
 import fbImg from "../imgs/facebook.png";
@@ -18,10 +17,10 @@ import { regesterAPI } from "../API/register";
 import { useRef, useState } from "react";
 import { StyledpasswordIcone } from "../styledComponent/StyledpasswordIcone";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { IoCloudDone } from "react-icons/io5";
 
 import { scrollToTop } from './scrollToTop';
-import { StyledSuccess } from "../styledComponent/seccess";
+import Success from "../component/Success";
+import { useGetGeoLocation } from "../hooks/getGeioLocation";
 const style = {
   width: { pc: "100%" },
 };
@@ -30,6 +29,7 @@ export default function ClientsignUp() {
   const [isCreated,setIsCreated] = useState(false)
   const [showPassword, SetShowPassword] = useState(false)
   const navigate =useNavigate()
+  const {address ,lon,lat} = useGetGeoLocation()
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -37,7 +37,7 @@ export default function ClientsignUp() {
   const cityRef = useRef();
   const passwordRefConfirm = useRef();
 
-  const register = async (userData) => {
+const register = async (userData) => {
     
   await regesterAPI.registerClient(userData).then(
     (res)=>{
@@ -52,13 +52,14 @@ export default function ClientsignUp() {
     .catch(res=>console.log(res));
     
   };
+
   const handelSubmit = (e) => {
     e.preventDefault()
     const userData = {
       name:nameRef.current.value,
       city: cityRef.current.value,
-      lon: "3",
-      lat: "2",
+      lon: lon,
+      lat: lat,
       // image: "",
       phone_number: phoneRef.current.value,
       email: emailRef.current.value,
@@ -68,16 +69,11 @@ export default function ClientsignUp() {
     console.log(userData)
     register(userData);
   };
+ 
+
   if(isCreated){
     scrollToTop();
-    return <StyledSuccess>
-      <div className="icon">
-         <IoCloudDone style={{fontSize:'250',color:'#15b615b0',margin:'20px auto'}}/>
-         <p>
-          your account created successfully ,now you have to <Link to={'/login'}>Login</Link>
-         </p>
-      </div>
-    </StyledSuccess> 
+    return <Success/>
   }
   return (
     <StyledSignUp>
@@ -123,7 +119,7 @@ export default function ClientsignUp() {
         </StyledFiled>
         <StyledFiled>
           <label htmlFor="city">Location</label>
-          <StyledInput type="text" id="city" ref={cityRef} placeholder="City " />
+          <StyledInput type="text" id="city" defaultValue={address?.city} ref={cityRef} placeholder="City " />
         </StyledFiled>
         <StyledFiled style={{ position: 'relative' }}>
             <label htmlFor="password">Password</label>
