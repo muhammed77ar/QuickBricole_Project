@@ -3,10 +3,12 @@ import { RouterProvider, useNavigate } from 'react-router-dom'
 import router from './router'
 import axiosClient from './axios/axios'
 import { login } from './redux/slices/loginSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setCategories } from './redux/slices/categoriesSlice'
+import { loginSeletore } from './redux/selectores'
 
 function App() {
+  const {accessToken} = useSelector(loginSeletore);
   const dispatche = useDispatch()
   useEffect(()=>{
     const getUseInfo = async () => {
@@ -19,10 +21,13 @@ function App() {
         }
       }
       catch (err) {
+        localStorage.removeItem('access_token')
         console.log(err)
       }
     }
-    getUseInfo()
+    if(accessToken){
+      getUseInfo()
+    }
   },[])
 
   const getCategory = async () => {

@@ -186,9 +186,6 @@ background-color: #EEEEEE;
     height: 55.65px;
     padding: 0 10px;
     margin-bottom: 15px;
-    & option{
-      color: #EEEEEE;
-    }
 `
 export const Textarea = styled.textarea`
 
