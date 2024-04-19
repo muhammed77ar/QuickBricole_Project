@@ -69,7 +69,6 @@ const handelSubmit = (e) => {
   return (
     <form   onSubmit={handelSubmit}>
     <StyledSignUp>
-    
      <StyledTitle>
       Sign Up
      </StyledTitle>
