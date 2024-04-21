@@ -45,6 +45,8 @@ function App() {
  useEffect(()=>{
    getCategory()
  }, [])
+
+ 
   return (
     <>
       <RouterProvider router={router}/>
