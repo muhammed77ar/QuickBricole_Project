@@ -17,7 +17,7 @@ export const insialState = {
           image4: "https://picsum.photos/200/300",
           image5: "https://picsum.photos/200/300",
           title: "This is the title",
-          description: "This is the description for the first portfolio item.This is the description for the second portfolio item. This is the description for the second portfolio item.",
+          description: " for the second portfolio item.",
         },
         {
           id:2,
