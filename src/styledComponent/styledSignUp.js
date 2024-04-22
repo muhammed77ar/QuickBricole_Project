@@ -30,6 +30,10 @@ gap: 10px 0px;
  margin: 2px auto;
  width: ${({width})=>width||'50%'};
 padding:0px 20px  ;
+.err{
+  color:red;
+  padding-left:20px ;
+}
 @media screen and (max-width:860px) {
   width: 100%;
 }

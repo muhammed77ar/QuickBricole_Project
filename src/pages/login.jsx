@@ -11,9 +11,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import axiosClient from '../axios/axios';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/slices/loginSlice';
+import { StyledLoader } from '../styledComponent/styledLoader';
 
 export default function Login() {
   const [showPassword, SetShowPassword] = useState(false)
+  const [errs,setErrs] = useState({})
+  const [isLoading, SetIsLoading] = useState(false);
   const emailRef = useRef()
   const passwordRef = useRef()
   const dispatche = useDispatch()
@@ -26,11 +29,14 @@ export default function Login() {
         password : passwordRef.current.value
       }
     // console.log(data)
-   
-
-      const {data} = await axiosClient.post('/login',payload);
-      console.log(data)
-
+    try {
+      SetIsLoading(true)
+  const response = await axiosClient.post('/login',payload).catch(({response})=>{
+        const {data} = response;
+         setErrs(data.errors)
+      });
+      // console.log(data)
+    const data = response?.data 
     if (data?.token) {
       const { token } = data
       localStorage.setItem('access_token', token);
@@ -47,6 +53,12 @@ export default function Login() {
           }
         })
     }
+    } catch (error) {
+      console.log(error)
+    }finally{
+        SetIsLoading(false)
+    }
+    
 
   }
         
@@ -69,6 +81,7 @@ export default function Login() {
           <StyledFiled>
             <label htmlFor="email">Email</label>
             <StyledInput ref={emailRef} type="email" id="email" name="email" placeholder="ex:mail@exemple.com" />
+            {errs.email?.map((item,key)=><div className='err' key={key}>{item}</div>)}
           </StyledFiled>
           <StyledFiled style={{ position: 'relative' }}>
             <label htmlFor="password">Password</label>
@@ -78,10 +91,11 @@ export default function Login() {
               }}>
               {showPassword ? <FaEye /> : < FaEyeSlash />}
             </StyledpasswordIcone>
+            {errs.password?.map((item,key)=><div className='err' key={key}>{item}</div>)}
           </StyledFiled>
           <SubmitGroup>
             <StyledButton type='submit'>
-              Submit
+                {isLoading ? <StyledLoader/> : "login"} 
             </StyledButton>
             <p>i don't have account <Link to='/signup'>Sign up</Link></p>
           </SubmitGroup>

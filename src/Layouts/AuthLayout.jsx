@@ -18,7 +18,9 @@ export default function AuthLayout(){
     const getUseInfo = async()=>{
        try {
             setIsLoading(true)
-           const  res = await axiosClient.get('/user').catch(err=>console.log(err))
+           const  res = await axiosClient.get('/user').catch(err=>{
+            localStorage.removeItem("access_token");
+            console.log(err)})
            if(res?.status === 200){
             const {data} =res;
 
