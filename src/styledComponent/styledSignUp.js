@@ -32,7 +32,7 @@ gap: 10px 0px;
 padding:0px 20px  ;
 .err{
   color:red;
-  padding-left:20px ;
+  padding-left:20px;
 }
 @media screen and (max-width:860px) {
   width: 100%;
@@ -80,9 +80,6 @@ export const StyledInput = styled.input`
  border-radius: 8.078px;
 background: #EEE;
 width: ${({width})=>width};
-&:focus{
-  outline: 2px solid black;
-}
 `
 export const StyledTitle = styled(Title)`
 text-align:center;`
