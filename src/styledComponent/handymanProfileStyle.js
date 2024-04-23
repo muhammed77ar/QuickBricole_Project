@@ -247,6 +247,7 @@ font-weight: 500;
     align-self: flex-start;
     color: white;
     font-weight: 500;
+    
     @media screen and (max-width: ${mobileBreakPoint}){
       align-self: center;
       color: black;
