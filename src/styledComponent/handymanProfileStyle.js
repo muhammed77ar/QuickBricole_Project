@@ -197,9 +197,12 @@ export const Container = styled.div`
 
 .sidebar {
   background-image: url("../photos/rm222-mind-03.jpg");
-  background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
+
+/* background: linear-gradient(to left, #f6f6f6, #addaff);
+background: linear-gradient(to left, #f6f6f6, #addaff); */
+
   color: black;
   box-shadow: 11px 0px 20px -15px rgba(0,0,0,0.45);
   padding: 100px 50px;
@@ -221,8 +224,8 @@ export const Container = styled.div`
     padding: 10px;
     max-width: 250px;
     word-wrap: break-word;
-    background-color: white;
-    border-left:5px solid white;
+
+    border-left:5px solid gray;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 background: rgba(255, 255, 255, 0.2);
