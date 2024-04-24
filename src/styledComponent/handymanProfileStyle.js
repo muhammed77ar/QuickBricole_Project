@@ -241,6 +241,7 @@ font-weight: 500;
   }
   .icons{
     display: flex;
+    
     justify-content: start;
     align-items: center;
     gap: 10px;
