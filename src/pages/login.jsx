@@ -40,9 +40,7 @@ export default function Login() {
 
     if (!passwordRef.current.value.trim()) {
       newErrors.password = 'Password is required';
-    } else if (passwordRef.current.value.trim().length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
-    } else {
+    }else {
       newErrors.password = '';
     }
 
