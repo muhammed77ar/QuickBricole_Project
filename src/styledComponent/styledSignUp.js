@@ -14,6 +14,7 @@ padding-top: 89px ;
   padding: 10px 100px ;
   align-items: center;
   gap: 8px;
+  
   @media screen and (max-width:900px) {
     padding:  0px;
     margin-bottom: 9px;
