@@ -65,7 +65,6 @@ const register = async (userData) => {
       SetIsLoading(false)
     }
   }
-
   const handelSubmit = (e) => {
     e.preventDefault()
     const userData = {
