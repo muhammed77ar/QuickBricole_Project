@@ -32,7 +32,8 @@ gap: 10px 0px;
 padding:0px 20px  ;
 .err{
   color:red;
-  padding-left:20px;
+  margin-top:-5px;
+  padding-left:10px;
 }
 @media screen and (max-width:860px) {
   width: 100%;
@@ -186,18 +187,20 @@ background-color: #EEEEEE;
     /* width: 500px; */
     height: 55.65px;
     padding: 0 10px;
-    margin-bottom: 15px;
+    outline: none;
 `
 export const Textarea = styled.textarea`
-
     width: 90%;
     min-height: 237px;
     max-height: 237px;
     background-color: #eeeeee;
     border-radius: 8.08px;
     border: none;
+    outline:none;
     padding: 10px;
     margin: 10px 0px;
+    
+
     @media screen and (max-width: 590px) {
         width: 400px;
     }

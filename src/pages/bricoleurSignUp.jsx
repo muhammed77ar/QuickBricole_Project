@@ -25,9 +25,10 @@ export default function BricoleurSignUp() {
   const [isCreated, setIsCreated] = useState(false);
   const [showPassword, SetShowPassword] = useState(false);
   const [isLoading, SetIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { address, lon, lat } = useGetGeoLocation();
-  const [errs, setErrs] = useState({});
-  // categs
+  const [errors, setErrors] = useState({});
+  // categories
   const categories = useSelector(CategoriesSeletore);
   const navigate = useNavigate();
   // refs
@@ -40,38 +41,64 @@ export default function BricoleurSignUp() {
   const descRef = useRef();
   const categoryRef = useRef();
 
-  const register = async (HandymanData) => {
-    try {
-      SetIsLoading(true)
-        await regesterAPI
-      .registerHandyman(HandymanData)
-      .then((res) => {
-        if (res.status === 201) {
-          setIsCreated(true);
-          setTimeout(() => {
-            navigate("/login");
-          }, 2000);
-        }
-      })
-      .catch(({ response }) => {
-        const { data } = response;
-        setErrs(data.errors);
-      });
-    } catch (error) {
-      console.log(error)
-    } finally{
-      SetIsLoading(false)
+  const validateForm = () => {
+    const newErrors = { name: "", email: "", phone_number: "", city: "", category: "", password: "", password_confirmation:"" , description: "" };
+
+    if (!nameRef.current.value.trim()) {
+      newErrors.name = "Full name is required";
     }
-  
+
+    if (!emailRef.current.value.trim()) {
+      newErrors.email = "Email is required";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailRef.current.value.trim())) {
+        newErrors.email = "Invalid email format";
+      }
+    }
+
+    if (!phoneRef.current.value.trim()) {
+      newErrors.phone_number = "Phone number is required";
+    }
+
+    if (!cityRef.current.value.trim()) {
+      newErrors.city = "City is required";
+    }
+
+    if (!categoryRef.current.value.trim()) {
+      newErrors.category = "Category is required";
+    }
+
+    if (!passwordRef.current.value.trim()) {
+      newErrors.password = "Password is required";
+    } else if (passwordRef.current.value.trim().length < 8) {
+      newErrors.password = "Password must be at least 8 characters long";
+    }
+
+    if (!passwordRefConfirm.current.value.trim()) {
+      newErrors.password_confirmation = "Password confirmation is required";
+    } else if (passwordRef.current.value.trim() !== passwordRefConfirm.current.value.trim()) {
+      newErrors.password_confirmation = "Password confirmation does not match";
+    }
+
+    if (!descRef.current.value.trim()) {
+      newErrors.description = "Description is required";
+    }
+
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => error === "");
   };
-  const handelSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    if (!validateForm()) return;
+
     const userData = {
       name: nameRef.current.value,
       city: cityRef.current.value,
       lon: lon,
       lat: lat,
-      // image: "",
       phone_number: phoneRef.current.value,
       email: emailRef.current.value,
       description: descRef.current.value,
@@ -79,16 +106,44 @@ export default function BricoleurSignUp() {
       category: categoryRef.current.value,
       password_confirmation: passwordRefConfirm.current.value,
     };
-    console.log(userData);
+
     register(userData);
   };
+
+  const register = async (HandymanData) => {
+    try {
+      SetIsLoading(true);
+      const response = await regesterAPI.registerHandyman(HandymanData);
+      if (response.status === 201) {
+        setIsCreated(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.log(error);
+      }
+    } finally {
+      SetIsLoading(false);
+    }
+  };
+
   if (isCreated) {
     scrollToTop();
     return <Success />;
   }
 
+  const handleChange = () => {
+    if (isSubmitted) {
+      validateForm();
+    }
+  };
+
   return (
-    <form onSubmit={handelSubmit}>
+    <form onSubmit={handleSubmit}>
       <StyledSignUp>
         <StyledTitle>Sign Up</StyledTitle>
 
@@ -100,12 +155,10 @@ export default function BricoleurSignUp() {
                 type="text"
                 ref={nameRef}
                 placeholder="enter your full name"
+                onChange={handleChange}
+                style={isSubmitted ? errors.name ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
-              {errs.name?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+              {isSubmitted && errors.name && <div className='err'>{errors.name}</div>}
             </StyledFiled>
             <StyledFiled width="100%">
               <label htmlFor="email">Email</label>
@@ -113,12 +166,10 @@ export default function BricoleurSignUp() {
                 type="email"
                 ref={emailRef}
                 placeholder="ex:mail@exemple.com"
+                onChange={handleChange}
+                style={isSubmitted ? errors.email ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
-               {errs.email?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+               {isSubmitted && errors.email && <div className='err'>{errors.email}</div>}
             </StyledFiled>
             <StyledFiled width="100%">
               <label htmlFor="phone">Phone Number</label>
@@ -126,12 +177,10 @@ export default function BricoleurSignUp() {
                 type="text"
                 ref={phoneRef}
                 placeholder="ex:+212-689675645"
+                onChange={handleChange}
+                style={isSubmitted ? errors.phone_number ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
-               {errs.phone_number?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+              {isSubmitted && errors.phone_number && <div className='err'>{errors.phone_number}</div>}
             </StyledFiled>
             <StyledFiled width="100%">
               <label htmlFor="phone"> City</label>
@@ -140,12 +189,10 @@ export default function BricoleurSignUp() {
                 defaultValue={address?.city}
                 ref={cityRef}
                 placeholder="your city"
+                onChange={handleChange}
+                style={isSubmitted ? errors.city ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
-               {errs.city?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+               {isSubmitted && errors.city && <div className='err'>{errors.city}</div>}
             </StyledFiled>
             <StyledFiled width="100%">
               <label htmlFor="categ">Category</label>
@@ -153,19 +200,17 @@ export default function BricoleurSignUp() {
                 type="text"
                 ref={categoryRef}
                 placeholder="enter your full name"
+                onChange={handleChange}
+                style={isSubmitted ? errors.category ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               >
-                <option value="">select your category</option>
+                <option selected disabled value="">select your category</option>
                 {categories?.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.name}
                   </option>
                 ))}
               </StyledSelect>
-               {errs.category?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+              {isSubmitted && errors.category && <div className='err'>{errors.category}</div>}
             </StyledFiled>
             <StyledFiled width="100%" style={{ position: "relative" }}>
               <label htmlFor="password">Password</label>
@@ -173,7 +218,9 @@ export default function BricoleurSignUp() {
                 ref={passwordRef}
                 type={`${showPassword ? "text" : "password"}`}
                 id="password"
-                placeholder="confirm  your password"
+                placeholder="Enter your password"
+                onChange={handleChange}
+                style={isSubmitted ? errors.password ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
               <StyledpasswordIcone
                 onClick={() => {
@@ -182,11 +229,7 @@ export default function BricoleurSignUp() {
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </StyledpasswordIcone>
-               {errs.password?.map((item, key) => (
-                <div className="err" key={key}>
-                  {item}
-                </div>
-              ))}
+              {isSubmitted && errors.password && <div className='err'>{errors.password}</div>}
             </StyledFiled>
             <StyledFiled width="100%" style={{ position: "relative" }}>
               <label htmlFor="passwordConfirm">Password confirmation</label>
@@ -194,7 +237,9 @@ export default function BricoleurSignUp() {
                 ref={passwordRefConfirm}
                 type={`${showPassword ? "text" : "password"}`}
                 id="passwordConfirm"
-                placeholder="confirm  your password"
+                placeholder="confirm your password"
+                onChange={handleChange}
+                style={isSubmitted ? errors.password_confirmation ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
               />
               <StyledpasswordIcone
                 onClick={() => {
@@ -203,22 +248,20 @@ export default function BricoleurSignUp() {
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </StyledpasswordIcone>
+              {isSubmitted && errors.password_confirmation && <div className='err'>{errors.password_confirmation}</div>}
             </StyledFiled>
           </div>
 
           <div className="desc">
             <label htmlFor="description">Description</label>
-             {errs.description?.map((item, key) => (
-                <div className="err" style={{color:'red'  }} key={key}>
-                  {item}
-                </div>
-              ))}
             <Textarea
               id="description"
               ref={descRef}
               placeholder="Tell your clients about your self ,your experience ... "
+              onChange={handleChange}
+                style={isSubmitted ? errors.description ? {border:"2px solid red"} : {border:"2px solid green"} : {border:"none"}}
             />
-
+            {isSubmitted && errors.description && <div style={{color:"red", marginTop:"-5px", paddingLeft:"10px"}}>{errors.description}</div>}
           </div>
         </StyledFormGroup>
         <SubmitGroup>

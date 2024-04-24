@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledLoader = styled.div`
-
   width: 60px;
   height: 40px;
+  margin-top: 6px;
   position: relative;
   display: inline-block;
   --base-color: #1e88e5; /*use your base color*/
