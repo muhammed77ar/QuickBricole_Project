@@ -25,11 +25,11 @@ export const LogoImg = styled.img`
   justify-self: start;
   margin-left: 20px;
   border-radius: 50px;
-  width: 90px;
+  width: 120px;
 
   @media screen and (max-width: ${mobileBreakPoint}) {
     position: absolute;
-    top: 0;
+    top: 5px;
     left: 0;
   }
 `;

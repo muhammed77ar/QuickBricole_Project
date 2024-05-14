@@ -91,8 +91,10 @@ export const Link = styled.a`
 `;
 
 export const FooterLogo = styled.img`
-  width: 100px;
+  width: 140px;
   margin-top: 10px;
+  border-radius: 50px;
+  object-fit: cover;
 `;
 export const Instagram = styled(AiFillInstagram)`
   font-size: 25px;

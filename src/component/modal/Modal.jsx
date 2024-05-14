@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import BackDrop from "./BackDrop";
 import { FaCamera } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { CategoriesSeletore } from "../../redux/selectores";
+import axiosClient from "../../axios/axios";
 const mobileBreakPoint = "700px";
 
 
@@ -192,6 +195,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   flex: 1;
 }
 
+label{
+  color: #686868;
+}
+
 .input-data input {
   width: 100%; 
   padding: 10px;
@@ -263,8 +270,6 @@ button:hover {
 
 }
 
-
-
     }
     }
     
@@ -274,13 +279,23 @@ button:hover {
 export default function Modal({ setShowModal, user }) {
   const [showContent, setShowContent] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
+  const [errors, setErrors] = useState({})
+  const categories = useSelector(CategoriesSeletore);
   const imageRef = useRef()
+  const nameRef = useRef()
+  const emailRef = useRef()
+  const cityRef = useRef()
+  const descriptionRef = useRef()
+  const categoryRef = useRef()
+  const phoneNumberRef = useRef()
+  const passwordRef = useRef()
+  const confirmPasswordRef = useRef()
 
   useEffect(() => {
     setShowContent(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling on the profile page
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'auto'; // Enable scrolling on the profile page when modal is closed
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
@@ -304,6 +319,35 @@ export default function Modal({ setShowModal, user }) {
       reader.readAsDataURL(file);
     }
   };
+  const [data, setData] = useState({})
+  const handelSubmit = (e) => {
+    e.preventDefault()
+    const payload = {
+      name: nameRef.current.value,
+      city: cityRef.current.value,
+      profile_image: imageRef.current.files[0],
+      phone_number: phoneNumberRef.current.value,
+      email: emailRef.current.value,
+      description: descriptionRef.current.value,
+      password: passwordRef.current.value,
+      category_id: parseInt(categoryRef.current.value),
+      password_confirmation: confirmPasswordRef.current.value,
+      "_method": "PUT"
+    }
+    // setData(payload)
+    axiosClient.post(`/handymans/${user?.id}`, payload)
+      .then(() => {
+        closeModal()
+        document.location.reload()
+      }).catch(err => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          console.log(response.data.errors)
+          setErrors(response.data.errors)
+        }
+      })
+  }
+  // console.log(data)
 
   return (
     <>
@@ -317,7 +361,7 @@ export default function Modal({ setShowModal, user }) {
           <div className="modalInfosContainer">
             {/* <img src={process.env.REACT_APP_BASE_URL + user?.profile_image} alt="profileimage" /> */}
 
-            <form action="" className="editForm">
+            <form action="" className="editForm" onSubmit={handelSubmit}>
               <div className="upload">
                 {previewImage ? (
                   <img src={previewImage} alt="Preview" width={100} height={100} />
@@ -336,50 +380,55 @@ export default function Modal({ setShowModal, user }) {
                 </div>
               </div>
               <div className="fields">
-                  <div class="form-row">
-                    <div class="input-data">
-                    <input type="text" placeholder="Enter your name" />
-                    </div>
-                  <div class="input-data">
-                    <select>
-                      <option value="" disabled selected>Select your city</option>
-                      <option value="city1">Settat</option>
-                      <option value="city2">Casablanca</option>
-                      <option value="city3">Rabat</option>
-                    </select>
-                  </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="input-data">
-                      <input type="text" placeholder="Enter your email"  />
-                    </div>
-                    <div class="input-data">
-                        <input type="text" placeholder="Enter your phone number" />
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="input-data">
-                      <input type="password" placeholder="Enter your new password"  />
-                    </div>
-                    <div class="input-data">
-                        <input type="password" placeholder="Confirm your new password" />
-                    </div>
-                  </div>
                 <div class="form-row">
                   <div class="input-data">
-                    <select>
-                      <option value="" disabled selected>Select a category</option>
-                      <option value="city1">Tvs repairer</option>
-                      <option value="city2">Electricity</option>
-                      <option value="city3">Drywall Repair</option>
+                    <label htmlFor="">Name:</label>
+                    <input type="text" ref={nameRef} defaultValue={user?.name} />
+                  </div>
+                  <div class="input-data">
+                    <label htmlFor="">City:</label>
+                    <input type="text" ref={cityRef} defaultValue={user?.city} />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="input-data">
+                    <label htmlFor="">Email:</label>
+                    <input type="text" ref={emailRef} placeholder="Enter your email" defaultValue={user?.email} />
+                  </div>
+                  <div class="input-data">
+                    <label htmlFor="">Phone Number:</label>
+                    <input type="text" ref={phoneNumberRef} placeholder="Enter your phone number" defaultValue={user?.phone_number} />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="input-data">
+                    <label htmlFor="">Password:</label>
+                    <input type="password" ref={passwordRef} placeholder="Enter your new password" />
+                  </div>
+                  <div class="input-data">
+                    <label htmlFor="">Confirm Password:</label>
+                    <input type="password" ref={confirmPasswordRef} placeholder="Confirm your new password" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="input-data">
+                    <label htmlFor="">Category:</label>
+                    <select ref={categoryRef} >
+                      <option selected disabled value={parseInt(user?.category_id)}>{user?.category}</option>
+                      {categories?.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div class="input-data">
-                    <textarea placeholder="Enter a description"></textarea>
+                    <label htmlFor="">Description:</label>
+                    <textarea placeholder="Enter a description" ref={descriptionRef}>{user?.description}</textarea>
                   </div>
                 </div>
-                  <button type="submit">Submit</button>
-                </div>
+                <button type="submit">Submit</button>
+              </div>
             </form>
           </div>
         </ModalContent>
