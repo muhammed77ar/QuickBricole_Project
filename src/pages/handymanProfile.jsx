@@ -26,6 +26,7 @@ export default function HandymanProfile() {
       return text;
     }
   };
+  console.log(user)
 
   return (
     <Container>
@@ -38,7 +39,7 @@ export default function HandymanProfile() {
           <button onClick={OpenModal} class="button-57"><span class="text"><FaEdit /></span><span>Edit</span></button>
           <img src={process.env.REACT_APP_BASE_URL + user?.profile_image} alt="profileimage" />
           <div className="infos">
-            <h3><i>{user?.name}</i></h3>
+            <h3>{user?.name}</h3>
             <span>{user?.email}</span>
             <div className="icons">
               <div>

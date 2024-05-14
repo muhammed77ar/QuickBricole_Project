@@ -24,7 +24,7 @@ export default function Navbarr() {
 
     return <>
         <NavbarItems scroll={scrolled}>
-            <Link to='/'><LogoImg src="../photos/logo-color.svg" /></Link>
+            <Link to='/'><LogoImg src="../photos/quickBricoleLogo.png" /></Link>
             <Menu onClick={handelClick}>
                 {clicked ? <CgClose className="icons" /> : <IoMenu className="icons" />}
             </Menu>
