@@ -75,11 +75,7 @@ export default function NavbarrClient() {
                         <ul>
                             <li className="DropdownItem">
                                 <FaRegUserCircle className="iconMenu" />
-                                <a href="client/profile">show profile</a>
-                            </li>
-                            <li className="DropdownItem">
-                                <MdEdit className="iconMenu" />
-                                <a href="#">Edit Profile</a>
+                                <Link to={"client/profile"} style={{textDecoration:"none"}}>show profile</Link>
                             </li>
                             <li className="DropdownItem">
                                 <IoMdLogOut className="iconMenu" />

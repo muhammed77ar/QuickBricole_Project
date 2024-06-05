@@ -7,6 +7,7 @@ import {
 } from "../../styledComponent/home/StyledHome";
 import HeroImg from '../../imgs/hero_img.png'
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <StyledHero>
@@ -19,9 +20,11 @@ export default function Hero() {
             Swiftly connect with top-tier professionals on demand through Quick
             Bricole, ensuring rapid access to elite talent when you need it most
           </p>
+          <Link to={"quickService"} style={{textDecoration:"none"}}>
           <StyledButton>
             Get Quick Service
           </StyledButton>
+          </Link>
           </div>
         </StyledSide>
 
