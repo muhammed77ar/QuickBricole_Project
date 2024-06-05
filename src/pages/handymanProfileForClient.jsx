@@ -3,52 +3,67 @@ import { Container } from "../styledComponent/handymanProfileStyle";
 import { handymanPortfolioSeletore, loginSeletore } from "../redux/selectores";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaScrewdriverWrench } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../component/modal/Modal";
 import { FaEdit } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import axiosClient from "../axios/axios";
 
-export default function HandymanProfile() {
-  const { user } = useSelector(loginSeletore)
-  const portfolio = useSelector(handymanPortfolioSeletore)
-  const [showModal, setShowModal] = useState(false)
+export default function HandymanProfileForClient() {
+    const {id} = useParams()
+    const portfolio = useSelector(handymanPortfolioSeletore)
+    const [handyman, setHandyman] = useState({})
+    const [loading, setLoading] = useState(true)
 
-  const OpenModal = () => {
-    setShowModal(true)
-  }
-  console.log(portfolio)
-  const truncateText = (text, maxLength) => {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + '...';
-    } else {
-      return text;
-    }
-  };
-  console.log(user)
+    useEffect(()=> {
+        const fetchHandyman = async () => {
+            try {
+                const response = await axiosClient.get(`/handymans/${id}`)
+                if (response.status === 200) {
+                    setHandyman(response.data?.data)
+                    setLoading(false);
+                    console.log(response)
+                }
+            } catch (error) {
+                console.log(error)
+                setLoading(false);
+            }
+        }
+        fetchHandyman()
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>;
+      }
+
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+          return text.substring(0, maxLength) + '...';
+        } else {
+          return text;
+        }
+      };
 
   return (
     <Container>
       <div className="heroProfile">
-        {showModal &&
-          <Modal setShowModal={setShowModal} user={user} />
-        }
         <div className="banner"></div>
         <div className="infosContainer">
-          <button onClick={OpenModal} class="button-57"><span class="text"><FaEdit /></span><span>Edit</span></button>
-          <img src={process.env.REACT_APP_BASE_URL + user?.profile_image} alt="profileimage" />
+          <img src={process.env.REACT_APP_BASE_URL + handyman?.profile_image} alt="profileimage" />
           <div className="infos">
-            <h3>{user?.name}</h3>
-            <span>{user?.email}</span>
+            <h3>{handyman?.name}</h3>
+            <span>{handyman?.email}</span>
             <div className="icons">
               <div>
                 <FaLocationDot className="i" />
-                <p>{user?.city}</p>
+                <p>{handyman?.city}</p>
               </div>
               <div>
                 <FaScrewdriverWrench className="i" />
-                <p>{user?.category}</p>
+                <p>{handyman?.category}</p>
               </div>
             </div>
           </div>
@@ -58,15 +73,15 @@ export default function HandymanProfile() {
         <div className="sidebar">
           <div className="icons">
             <FaPhone className="phone" />
-            {user?.phone_number}
+            {handyman?.phone_number}
           </div>
           <div className="icons">
             <TbMailFilled className="email" />
-            {user?.email}
+            {handyman?.email}
           </div>
           <div className="description">
             <p>What I do:</p>
-            {user?.description}
+            {handyman?.description}
           </div>
           <div className="rating">
             <p>4.0</p>
@@ -77,7 +92,7 @@ export default function HandymanProfile() {
         </div>
         <div className="portfolio">
           <div class="three">
-            <h1>My Portfolio</h1>
+            <h1>{handyman?.name} Portfolio</h1>
           </div>
           <ul class="cards">
             {portfolio.map(p => (

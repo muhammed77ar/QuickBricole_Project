@@ -293,6 +293,7 @@ font-weight: 500;
 }
 
 .three h1 {
+  text-transform: capitalize;
   margin-top: 40px;
   font-size: 28px;
   font-weight: 500;
