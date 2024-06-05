@@ -17,6 +17,7 @@ import HandymanLayout from './Layouts/HandymanLayout';
 import AuthLayout from './Layouts/AuthLayout';
 import HandymanProfile from './pages/handymanProfile';
 import ClientProfile from './pages/ClientProfile';
+import HandymanProfileForClient from './pages/handymanProfileForClient';
 
 const router = createBrowserRouter([
         {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
                         {path : "client/postService", element : <PostService />},
                         {path : "client/quickService", element : <QuickService />},
                         {path : "client/profile", element : <ClientProfile />},
+                        {path : "client/handymanProfile/:id", element : <HandymanProfileForClient />}
                 ]
         },
         {

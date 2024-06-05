@@ -20,7 +20,7 @@ export default function HandymanCard({handyman}) {
         window.location.href = whatsappLink;
       };
   return (
-    <Link to={"#"} style={{textDecoration:"none"}}>
+    <Link to={`/client/handymanProfile/${handyman?.id}`} style={{textDecoration:"none"}}>
     <StyleHandymanCard>
         <div className="top">
             <img src={process.env.REACT_APP_BASE_URL + handyman?.profile_image} alt="" />
