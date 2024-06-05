@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {insialState} from "../state";
-// console.log(iniState)
+
 export const loginSlice = createSlice({
   name:'login',
   initialState:insialState,
