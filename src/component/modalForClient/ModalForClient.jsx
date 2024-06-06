@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import BackDrop from "./BackDrop";
 import { FaCamera } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { CategoriesSeletore } from "../../redux/selectores";
 import axiosClient from "../../axios/axios";
 const mobileBreakPoint = "700px";
 
@@ -276,17 +274,14 @@ button:hover {
   
 `;
 
-export default function Modal({ setShowModal, user }) {
+export default function ModalForClient({ setShowModal, user }) {
   const [showContent, setShowContent] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
   const [errors, setErrors] = useState({})
-  const categories = useSelector(CategoriesSeletore);
   const imageRef = useRef()
   const nameRef = useRef()
   const emailRef = useRef()
   const cityRef = useRef()
-  const descriptionRef = useRef()
-  const categoryRef = useRef()
   const phoneNumberRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
@@ -328,14 +323,12 @@ export default function Modal({ setShowModal, user }) {
       profile_image: imageRef.current.files[0],
       phone_number: phoneNumberRef.current.value,
       email: emailRef.current.value,
-      description: descriptionRef.current.value,
       password: passwordRef.current.value,
-      category_id: parseInt(categoryRef.current.value),
       password_confirmation: confirmPasswordRef.current.value,
       "_method": "PUT"
     }
     // setData(payload)
-    axiosClient.post(`/handymans/${user?.id}`, payload)
+    axiosClient.post(`/users/${user?.id}`, payload)
       .then(() => {
         closeModal()
         document.location.reload()
@@ -408,23 +401,6 @@ export default function Modal({ setShowModal, user }) {
                   <div class="input-data">
                     <label htmlFor="">Confirm Password:</label>
                     <input type="password" ref={confirmPasswordRef} placeholder="Confirm your new password" />
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="input-data">
-                    <label htmlFor="">Category:</label>
-                    <select ref={categoryRef} >
-                      <option selected disabled value={parseInt(user?.category_id)}>{user?.category}</option>
-                      {categories?.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div class="input-data">
-                    <label htmlFor="">Description:</label>
-                    <textarea placeholder="Enter a description" ref={descriptionRef}>{user?.description}</textarea>
                   </div>
                 </div>
                 <button type="submit">Submit</button>

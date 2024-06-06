@@ -179,9 +179,3 @@ flex-wrap: wrap;
 gap: 30px;
 `
 
-
-
-
-
-
-
