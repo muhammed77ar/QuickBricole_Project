@@ -13,7 +13,7 @@ const socialMediaLinks = {
 const FooterElements = [
   {
     id: "section",
-    logo: "../photos/quickBricoleLogo.png",
+    logo: "/photos/quickBricoleLogo.png",
     text: "The platform where you can search for professionals such as carpenters, mechanics, electricians and other service providers."
   },
   {

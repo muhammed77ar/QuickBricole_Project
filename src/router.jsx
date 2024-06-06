@@ -47,7 +47,7 @@ const router = createBrowserRouter([
                         {path : "client/postService", element : <PostService />},
                         {path : "client/quickService", element : <QuickService />},
                         {path : "client/profile", element : <ClientProfile />},
-                        {path : "client/handymanProfile/:id", element : <HandymanProfileForClient />}
+                        {path : "client/handymanProfileForClient/:id", element : <HandymanProfileForClient />}
                 ]
         },
         {

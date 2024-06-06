@@ -1,22 +1,19 @@
 import { useSelector } from "react-redux";
-import { Container } from "../styledComponent/handymanProfileStyle";
-import { handymanPortfolioSeletore, loginSeletore } from "../redux/selectores";
+import { handymanPortfolioSeletore } from "../redux/selectores";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaScrewdriverWrench } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import Modal from "../component/modal/Modal";
-import { FaEdit } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axios/axios";
+import {Container2 } from "../styledComponent/handymanProfileForClient";
 
 export default function HandymanProfileForClient() {
     const {id} = useParams()
     const portfolio = useSelector(handymanPortfolioSeletore)
     const [handyman, setHandyman] = useState({})
-    const [loading, setLoading] = useState(true)
 
     useEffect(()=> {
         const fetchHandyman = async () => {
@@ -24,20 +21,18 @@ export default function HandymanProfileForClient() {
                 const response = await axiosClient.get(`/handymans/${id}`)
                 if (response.status === 200) {
                     setHandyman(response.data?.data)
-                    setLoading(false);
+                 
                     console.log(response)
                 }
             } catch (error) {
                 console.log(error)
-                setLoading(false);
+              
             }
         }
         fetchHandyman()
     }, [])
 
-    if (loading) {
-        return <div>Loading...</div>;
-      }
+    
 
     const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -48,7 +43,7 @@ export default function HandymanProfileForClient() {
       };
 
   return (
-    <Container>
+    <Container2>
       <div className="heroProfile">
         <div className="banner"></div>
         <div className="infosContainer">
@@ -110,6 +105,6 @@ export default function HandymanProfileForClient() {
           </ul>
         </div>
       </div>
-    </Container>
+    </Container2>
   )
 }
